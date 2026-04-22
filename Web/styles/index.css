@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+h1 {
+    font-size: 80px;
+    margin-bottom: 40px;
+    font-weight: 900;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: 2px;
+    color: #000;
+}
+
+.botones-container {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.boton {
+    border: none;
+    border-radius: 10px;
+    padding: 16px 60px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boton-jugar {
+    background: #333;
+    color: white;
+}
+
+.boton-jugar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    background: #111;
+}
+
+.boton-pokedex {
+    background: white;
+    color: #333;
+    border: 3px solid #333;
+}
+
+.boton-pokedex:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    background: #333;
+    color: white;
+}
+
+.boton-banners {
+    background: #333;
+    color: white;
+}
+
+.boton-banners:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    background: #111;
+}
+
+.boton-portfolio {
+    background: #fd7d24;
+    color: white;
+}
+
+.boton-portfolio:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(253, 125, 36, 0.4);
+    background: #ff844d;
+}
+
+.boton:active {
+    transform: translateY(-1px);
+}

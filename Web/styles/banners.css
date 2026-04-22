@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #ffcc00;
+}
+
+#banner {
+    background-image: url('../img/Banner.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-color: #1a1a1a;
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
+    border: 5px solid #ffcc00;
+    border-radius: 15px;
+}
+
+.case {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin: 20px auto;
+    background-color: #333;
+    border: 2px solid #ffcc00;
+    border-radius: 10px;
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+.gift-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.lid {
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    width: 270px;
+    height: 190px;
+    background-image: url('../img/Regalo.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 2s ease-in-out;
+    z-index: 2;
+}
+
+.lid.open {
+    transform: translateY(-100%);
+}
+
+.reward-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.reward {
+    width: 100px;
+    height: 100px;
+    display: none;
+}
+
+.reward.show {
+    display: block;
+}
+
+#openButton {
+    background-color: #ffcc00;
+    color: #1a1a1a;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#openButton:hover {
+    background-color: #e6b800;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #ffcc00;
+}

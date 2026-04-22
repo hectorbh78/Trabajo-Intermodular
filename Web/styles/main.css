@@ -1,0 +1,446 @@
+.hero{
+    grid-area: hero;
+    display: grid;
+    place-items:center;
+    grid-template-columns: 100%;
+    background: linear-gradient(135deg, #313131, #1a1a1a);
+    color: white;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 20px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    flex-direction: column;
+    background-color: #f4f4f4;
+    color: #222;
+}
+
+.modo-oscuro-btn {
+    position: relative;
+    align-self: flex-start;
+    margin: 20px 0 0 20px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(33, 33, 33, 0.9);
+    color: white;
+    font-size: 18px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.modo-oscuro-btn:hover {
+    transform: translateY(-1px);
+    background-color: rgba(33, 33, 33, 1);
+}
+
+body.dark-mode {
+    background-color: #080808;
+    color: #ececec;
+}
+
+body.dark-mode .hero {
+    background: linear-gradient(135deg, #141414, #1f1f1f);
+    color: #f2f2f2;
+}
+
+body.dark-mode .abajo {
+    background-color: #111111;
+    color: #bbbbbb;
+    border-color: #272727;
+}
+
+body.dark-mode .cartas {
+    background-color: #2d2d2d;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
+}
+
+body.dark-mode .image-container {
+    background: #111111;
+}
+
+body.dark-mode .info-container {
+    background-color: #2d2d2d;
+    border-radius: 0 0 12px 12px;
+}
+
+body.dark-mode .pokemon-number {
+    color: #a3a3a3;
+}
+
+body.dark-mode .pokemon-name {
+    color: #ffffff;
+}
+
+body.dark-mode .pokemon-desc {
+    color: #d8d8d8;
+}
+
+body.dark-mode .buscador {
+    border-color: #5f5f5f;
+    background-color: #1a1a1a;
+    color: #f4f4f4;
+}
+
+body.dark-mode .buscador:focus {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.12);
+}
+
+body.dark-mode .tipo {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+
+body.dark-mode .modo-oscuro-btn {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #f4f4f4;
+}
+
+.abajo{
+    color: #666;
+    background-color: #f5f5f5;
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px;
+    border-top: 2px solid #e0e0e0;
+    width: 100%;
+}
+
+
+
+.Contenedor {
+    max-width: 1200px;
+    width: 100%;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.pokemonCaja {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding: 0 20px;
+}
+
+.botones{
+    margin:15px auto;
+    background: linear-gradient(135deg, #fd7d24, #ff844d);
+    border-radius: 50px;
+    width: 180px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    color: white;
+    font-size: 14px;
+}
+
+/*tarjetas*/
+.cartas{
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 10px;
+    height: 100%;
+}
+
+.cartas:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+
+.image-container {
+    background: linear-gradient(135deg, #f5f5f5 0%, #ece9e9 100%);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    min-height: 200px;
+}
+
+.image-container img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.image-container.dragasaur-container {
+    padding: 10px;
+    min-height: 220px;
+}
+
+.image-container.salasaur-container {
+    padding: 15px;
+}
+
+.image-container.bulbasaur-small {
+    padding: 40px;
+    align-items: flex-end;
+}
+
+.image-container.charmeleon-container {
+    padding: 10px;
+    min-height: 220px;
+}
+
+
+img[alt="Dragasaur"] {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain;
+}
+
+
+img[alt="Salasaur"] {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain;
+}
+
+
+img[alt="Lagasur"] {
+    transform: translateY(-10px);
+}
+
+
+img[alt="Nava-Jazo"] {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain;
+}
+
+/*info*/
+.info-container {
+    padding: 15px 20px;
+}
+
+.pokemon-number {
+    font-size: 13px;
+    color: #919191;
+    margin: 0 0 5px 0;
+    font-weight: bold;
+}
+
+.pokemon-name {
+    font-size: 20px;
+    color: #313131;
+    margin: 0 0 12px 0;
+    font-weight: 700;
+}
+
+.ContenedorTipo {
+    display: flex;
+    gap: 8px;
+}
+
+.tipo{
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    text-transform: capitalize;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/*colores tipos*/
+.planta { background-color: #9bcc50; }
+.veneno { background-color: #b97fc9; }
+.fuego  { background-color: #fd7d24; }
+.volador { background-color: #3dc7ef; }
+.agua   { background-color: #4592c4; }
+.bicho  { background-color: #729f3f; }
+.acero  { background-color: #5f5f5f; }
+.navaja { background-color: #b3b3b3; }
+.explosivo { background-color: #d33b3b; }
+.pistola { background-color: #3b3b3b; }
+
+@media (max-width: 900px) {
+    .pokemonCaja { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .pokemonCaja { grid-template-columns: 1fr; }
+}
+
+@media screen and (max-width: 100px){
+    .header{
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .header .nav{
+        justify-self: center;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+#panelColores {
+    display: none;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+#panelColores.activo {
+    display: flex;
+}
+
+.buscador{
+    padding: 12px 20px;
+    border-radius: 50px;
+    border: 2px solid #fd7d24;
+    width: 280px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.buscador:focus{
+    outline: none;
+    border-color: #ff844d;
+    box-shadow: 0 0 10px rgba(253, 125, 36, 0.3);
+}
+
+.boton-nueva{
+    background: #ffcc4d;
+    color: #2b2b2b;
+    border: none;
+    border-radius: 40px;
+    padding: 12px 22px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 204, 77, 0.3);
+}
+
+.boton-nueva:hover{
+    background: #ffb347;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 204, 77, 0.5);
+}
+
+.pokemon-desc {
+    margin: 0 0 10px 0;
+    color: #444;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.modal{
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.55);
+    padding: 20px;
+    z-index: 10;
+}
+
+.modal.activo{
+    display: flex;
+}
+
+.modal-contenido{
+    background: white;
+    border-radius: 14px;
+    width: min(520px, 100%);
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.modal-cerrar{
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal-form{
+    display: grid;
+    gap: 10px;
+}
+
+.modal-form input[type="text"],
+.modal-form textarea,
+.modal-form input[type="file"]{
+    border: 1px solid #d0d0d0;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.modal-acciones{
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 5px;
+}
+
+.boton-primario{
+    background: #2f7cf6;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.boton-primario:hover{
+    background: #2568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(47, 124, 246, 0.4);
+}
+
+.boton-secundario{
+    background: #e6e6e6;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.boton-secundario:hover{
+    background: #d0d0d0;
+}

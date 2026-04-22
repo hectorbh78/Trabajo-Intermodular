@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pokemons>
+    <pokemon>
+        <imagen src="img/Bulbasaur.png" alt="Caca"/>
+        <numeroPokedex>N.º 0001</numeroPokedex>
+        <nombre>Lagasur</nombre>
+        <tipo1>Planta</tipo1>
+    </pokemon>
+
+    <pokemon>
+        <imagen src="img/Ivysaur.png" alt="Caca"/>
+        <numeroPokedex>N.º 0002</numeroPokedex>
+        <nombre>Salasaur</nombre>
+        <tipo1>Planta</tipo1>
+        <tipo2>Veneno</tipo2>
+    </pokemon>
+
+    <pokemon>
+        <imagen src="img/Venusaur.png" alt="Caca"/>
+        <numeroPokedex>N.º 0003</numeroPokedex>
+        <nombre>Dragasaur</nombre>
+        <tipo1>Planta</tipo1>
+        <tipo2>Veneno</tipo2>
+    </pokemon>
+
+    <pokemon>
+        <imagen src="img/Charmander.png" alt="Caca"/>
+        <numeroPokedex>N.º 0004</numeroPokedex>
+        <nombre>Jai</nombre>
+        <tipo1>Acero</tipo1>
+        <tipo2></tipo2>
+    </pokemon>
+
+    <pokemon>
+        <imagen src="img/Charmeleon.png" alt="Caca"/>
+        <numeroPokedex>N.º 0005</numeroPokedex>
+        <nombre>Nava-Jazo</nombre>
+        <tipo1>Navaja</tipo1>
+        <tipo2>Acero</tipo2>
+        <tipo2></tipo2>
+    </pokemon>
+
+    <pokemon>
+        <imagen src="img/Charizard.png" alt="Caca"/>
+        <numeroPokedex>N.º 0006</numeroPokedex>
+        <nombre>Tapu-Ñalo</nombre>
+        <tipo1>Navaja</tipo1>
+        <tipo2>Acero</tipo2>
+    </pokemon>
+
+    <pokemon>
+        <imagen src="img/Squirtle.png" alt="Caca"/>
+        <numeroPokedex>N.º 0007</numeroPokedex>
+        <nombre>Rico</nombre>
+        <tipo1>Agua</tipo1>
+        <tipo2></tipo2>
+
+    </pokemon>
+
+    <pokemon>
+        <imagen src="img/Wartortle.png" alt="Caca"/>
+        <numeroPokedex>N.º 0008</numeroPokedex>
+        <nombre>Krico</nombre>
+        <tipo1>Agua</tipo1>
+        <tipo2>Acero</tipo2>
+    </pokemon>
+
+    <pokemon>
+        <imagen src="img/Blastoise.png" alt="Caca"/>
+        <numeroPokedex>N.º 0009</numeroPokedex>
+        <nombre>Krico: Hulkbuster</nombre>
+        <tipo1>Acero</tipo1>
+        <tipo2>Explosivo</tipo2>
+    </pokemon>
+</pokemons>

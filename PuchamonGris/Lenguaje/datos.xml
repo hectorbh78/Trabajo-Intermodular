@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<puchadex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="esquema.xsd">
+    <entrenador id="1">
+        <nombre>Ruben</nombre>
+        <puchamones>
+            <puchamon id="P001">
+                <nombre>Lagasur</nombre>
+                <nivel>10</nivel>
+                <vida>35</vida>
+                <tipos>
+                    <tipo>Planta</tipo>
+                </tipos>
+                <ataques>
+                    <ataque daño="50">Coletazo</ataque>
+                </ataques>
+            </puchamon>
+            <puchamon id="P002">
+                <nombre>Salasaur</nombre>
+                <nivel>21</nivel>
+                <vida>65</vida>
+                <tipos>
+                    <tipo>Planta</tipo>
+                    <tipo>Veneno</tipo>
+                </tipos>
+            </puchamon>
+        </puchamones>
+        <inventario>
+            <objeto id="OBJ1">
+                <nombre>Pocion</nombre>
+                <efecto>Cura 20 HP</efecto>
+            </objeto>
+            <objeto id="OBJ2">
+                <nombre>SuperPocion</nombre>
+                <efecto>Cura 50 HP</efecto>
+            </objeto>
+        </inventario>
+    </entrenador>
+    
+    <entrenador id="2">
+        <nombre>Jp</nombre>
+        <puchamones>
+            <puchamon id="P004">
+                <nombre>Jai</nombre>
+                <nivel>12</nivel>
+                <vida>40</vida>
+                <tipos>
+                    <tipo>Acero</tipo>
+                </tipos>
+            </puchamon>
+        </puchamones>
+        <inventario>
+            <objeto id="OBJ1">
+                <nombre>Pocion</nombre>
+                <efecto>Cura 20 HP</efecto>
+            </objeto>
+        </inventario>
+    </entrenador>
+</puchadex>
