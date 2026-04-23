@@ -2,15 +2,15 @@ package ConectarBBDDpuchamon;
 import PuchamonGris.*;
 import java.sql.*;
 import java.util.*;
-public class InventarioDAO{
 
-     public List<Inventario> selectInventario (Connection pruebaConexion) {
+public class TipoDAO{
+    public List<Tipo> selectTipo (Connection pruebaConexion) {
 
-        String consulta = "select * from inventario";
+        String consulta = "select * from tipo";
 
-        List<Inventario> inventario = new ArrayList<>();
+        List<Tipo> tipo = new ArrayList<>();
 
-         try(Statement stmt = pruebaConexion.createStatement();
+        try(Statement stmt = pruebaConexion.createStatement();
             ResultSet resultado = stmt.executeQuery(consulta)){
 
             //en el try se ha creado la sentencia y se ha ejecutado la query
@@ -21,16 +21,18 @@ public class InventarioDAO{
                 //el servidor y que se almacena en ResultSet
                 //para obtener los datos se utilizan métodos get
                 //obtenemos columna a columna
-                int idEntrenador = resultado.getInt("idEntrenador");
-                int idObjeto = resultado.getInt("idObjeto");
+                int idTipo = resultado.getInt("idTipo");
+                String nombre = resultado.getString("nombre");
+                
 
 
-                Inventario invent = new Inventario(idEntrenador, idObjeto);
-                inventario.add(invent); //se añade el alumno a la lista
+                Tipo tip = new Tipo(idTipo,nombre);
+                tipo.add(tip); //se añade el alumno a la lista
             }
         } catch(SQLException e) {
             e.printStackTrace();
         }
     
-    return inventario;
-    }}
+    return tipo;
+    }
+}

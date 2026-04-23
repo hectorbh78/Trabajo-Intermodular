@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.*;
 
 public class AtaqueDAO{
-    public List<Ataque> selectEntrenador (Connection pruebaConexion) {
+    public List<Ataque> selectAtaque (Connection pruebaConexion) {
 
         String consulta = "select * from Ataque";
 

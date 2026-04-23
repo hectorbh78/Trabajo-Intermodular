@@ -1,31 +1,35 @@
 package PuchamonGris;
 import java.util.*;
-public abstract class Ataque{
 
+public class Ataque {
+
+    // Variables
     int idAtaque;
     int daño;
     String nombre;
-    String TipoDamage;
+    String tipoDamage;
     int idTipo;
 
-    public Ataque(int idAtaque,String nombre,  int daño, String TipoDamage, int idTipo){
-        this.idAtaque=idAtaque;
+    // Constructor
+    public Ataque(int idAtaque, String nombre, int daño, String tipoDamage, int idTipo){
+        this.idAtaque = idAtaque;
         this.daño = daño;
         this.nombre = nombre;
-        this.TipoDamage = TipoDamage;
-        this.idTipo=idTipo;
+        this.tipoDamage = tipoDamage;
+        this.idTipo = idTipo;
     }
 
-    public int getdamage() {
+    // Getters
+    public int getDamage() {
         return daño;
     }
 
-    public String getnombre() {
+    public String getNombre() {
         return nombre;
     }
 
     public String getTipoDamage() {
-        return TipoDamage;
+        return tipoDamage;
     }
 
     public int getIdTipo() {
@@ -36,29 +40,36 @@ public abstract class Ataque{
         return idAtaque;
     }
 
-    public void setdamage(){
-        this.daño=daño;
+    // Setters
+    public void setDamage(int daño){
+        this.daño = daño;
     }
 
-    public void setNombre() {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public void setTipoDamage() {
-        this.TipoDamage = TipoDamage;
+    public void setTipoDamage(String tipoDamage) {
+        this.tipoDamage = tipoDamage;
     }
 
-    public void setIdAtaque() {
-        this.idAtaque=idAtaque;
+    public void setIdAtaque(int idAtaque) {
+        this.idAtaque = idAtaque;
     }
 
-    public void setIdTipo() {
-        this.idTipo=idTipo;
+    public void setIdTipo(int idTipo) {
+        this.idTipo = idTipo;
     }
 
+    // Probabilidad del 10% para crítico especial
+    public boolean CalcularCriticoEspecial(){
+        Random rand = new Random();
+        return rand.nextDouble() < 0.1;
+    }
 
-    public abstract boolean CalcularCritico();
-
-    public abstract String getDescripcion();
-
+    // Probabilidad del 20% para crítico normal
+    public boolean CalcularCriticoNormal(){
+        Random rand = new Random();
+        return rand.nextDouble() < 0.2;
+    }
 }

@@ -1,19 +1,39 @@
 package PuchamonGris;
 
-public abstract class TIposPuchamon {
-    String ElementoPuchamon;
+public class TIposPuchamon {
+    int idPuch;
+    int idTipo;
+    int idTipo2;
 
-    public TIposPuchamon(String ElementoPuchamon) {
-        this.ElementoPuchamon = ElementoPuchamon;
+    public TIposPuchamon(int idPuch, int idTipo, int idTipo2) {
+        this.idPuch = idPuch;
+        this.idTipo = idTipo;
+        this.idTipo2 = idTipo2;
 
     }
-    public String getElementoPuchamon() {
-        return ElementoPuchamon;
+
+    public int getIdPuch() {
+        return idPuch;
     }
 
-    public void setElementoPuchamon(String ElementoPuchamon) {
-        this.ElementoPuchamon = ElementoPuchamon;
+    public void setIdPuch(int idPuch) {
+        this.idPuch = idPuch;
     }
 
-    public abstract void EscogerElementoPuchamon();
+    public int getIdTipo() {
+        return idTipo;
+    }
+
+    public void setIdTipo(int idTipo) {
+        this.idTipo = idTipo;
+    }
+
+    public int getIdTipo2() {
+        return idTipo2;
+    }
+
+    public void setIdTipo2(int idTipo2) {
+        this.idTipo2 = idTipo2;
+    }
+    
 }

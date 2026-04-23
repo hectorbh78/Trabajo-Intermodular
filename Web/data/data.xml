@@ -2,14 +2,14 @@
 
 <pokemons>
     <pokemon>
-        <imagen src="img/Bulbasaur.png" alt="Caca"/>
+        <imagen src="img/Bulbasaur.png" alt="Error"/>
         <numeroPokedex>N.º 0001</numeroPokedex>
         <nombre>Lagasur</nombre>
         <tipo1>Planta</tipo1>
     </pokemon>
 
     <pokemon>
-        <imagen src="img/Ivysaur.png" alt="Caca"/>
+        <imagen src="img/Ivysaur.png" alt="Error"/>
         <numeroPokedex>N.º 0002</numeroPokedex>
         <nombre>Salasaur</nombre>
         <tipo1>Planta</tipo1>
@@ -17,7 +17,7 @@
     </pokemon>
 
     <pokemon>
-        <imagen src="img/Venusaur.png" alt="Caca"/>
+        <imagen src="img/Venusaur.png" alt="Error"/>
         <numeroPokedex>N.º 0003</numeroPokedex>
         <nombre>Dragasaur</nombre>
         <tipo1>Planta</tipo1>
@@ -25,7 +25,7 @@
     </pokemon>
 
     <pokemon>
-        <imagen src="img/Charmander.png" alt="Caca"/>
+        <imagen src="img/Charmander.png" alt="Error"/>
         <numeroPokedex>N.º 0004</numeroPokedex>
         <nombre>Jai</nombre>
         <tipo1>Acero</tipo1>
@@ -33,7 +33,7 @@
     </pokemon>
 
     <pokemon>
-        <imagen src="img/Charmeleon.png" alt="Caca"/>
+        <imagen src="img/Charmeleon.png" alt="Error"/>
         <numeroPokedex>N.º 0005</numeroPokedex>
         <nombre>Nava-Jazo</nombre>
         <tipo1>Navaja</tipo1>
@@ -42,7 +42,7 @@
     </pokemon>
 
     <pokemon>
-        <imagen src="img/Charizard.png" alt="Caca"/>
+        <imagen src="img/Charizard.png" alt="Error"/>
         <numeroPokedex>N.º 0006</numeroPokedex>
         <nombre>Tapu-Ñalo</nombre>
         <tipo1>Navaja</tipo1>
@@ -50,7 +50,7 @@
     </pokemon>
 
     <pokemon>
-        <imagen src="img/Squirtle.png" alt="Caca"/>
+        <imagen src="img/Squirtle.png" alt="Error"/>
         <numeroPokedex>N.º 0007</numeroPokedex>
         <nombre>Rico</nombre>
         <tipo1>Agua</tipo1>
@@ -59,7 +59,7 @@
     </pokemon>
 
     <pokemon>
-        <imagen src="img/Wartortle.png" alt="Caca"/>
+        <imagen src="img/Wartortle.png" alt="Error"/>
         <numeroPokedex>N.º 0008</numeroPokedex>
         <nombre>Krico</nombre>
         <tipo1>Agua</tipo1>
@@ -67,7 +67,7 @@
     </pokemon>
 
     <pokemon>
-        <imagen src="img/Blastoise.png" alt="Caca"/>
+        <imagen src="img/Blastoise.png" alt="Error"/>
         <numeroPokedex>N.º 0009</numeroPokedex>
         <nombre>Krico: Hulkbuster</nombre>
         <tipo1>Acero</tipo1>

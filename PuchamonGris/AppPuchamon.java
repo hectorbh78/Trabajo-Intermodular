@@ -1,7 +1,11 @@
 package PuchamonGris;
-import java.util.Scanner;
+import ConectarBBDDpuchamon.InventarioDAO;
+import ConectarBBDDpuchamon.PruebaConexion;
+import ConectarBBDDpuchamon.PuchamonDAO;
+
 import java.util.*;
 import PuchamonGris.*;
+import java.sql.*;
 
 public class AppPuchamon {
     public static void main(String[] args) {
@@ -15,11 +19,11 @@ public class AppPuchamon {
             opcion= miEscaner.nextInt();
             switch (opcion){
                 case 1:
-                    app.menujuego();
+                    app.jueguito();
                     
                     break;
                 case 2:
-                    System.out.println("Inventario");
+                    app.mostrarVersion();
                     break;
                 case 3:
                     System.out.println("Salir");
@@ -40,6 +44,51 @@ public class AppPuchamon {
         System.out.println("+-------------------+");
     }
 
+    public void mostrarVersion() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\n+==========================+");
+        System.out.println("|      PUCHA ADVENTURE      |");
+        System.out.println("|      Versión 1.0.0        |");
+        System.out.println("+==========================+\n");
+        System.out.println("Presiona Enter para volver al menú...");
+        scanner.nextLine();
+    }
+
+    public Puchamon seleccionarPuchamon() {
+        Scanner scanner = new Scanner(System.in);
+        int opcionPucha;
+        
+        System.out.println("\n+====== SELECCIONA TU PUCHAMON ======+");
+        System.out.println("| 1. Lagasaur (Tipo Planta)            |");
+        System.out.println("| 2. Jai (Tipo Acero)                  |");
+        System.out.println("| 3. Krico (Tipo Agua)                 |");
+        System.out.println("+====================================+");
+        System.out.print("Elige tu Puchamon (1-3): ");
+        
+        opcionPucha = scanner.nextInt();
+        Puchamon puchaSeleccionado = null;
+        
+        switch(opcionPucha) {
+            case 1:
+                puchaSeleccionado = new Puchamon(1, "Lagasaur", 100, 1, 1);
+                System.out.println("\n¡Has elegido a Lagasaur! ¡Un fuerte Puchamon de tipo Planta!");
+                break;
+            case 2:
+                puchaSeleccionado = new Puchamon(2, "Jai", 300, 1, 1);
+                System.out.println("\n¡Has elegido a Jai! ¡Un gran Puchamon de tipo Acero!");
+                break;
+            case 3:
+                puchaSeleccionado = new Puchamon(3, "Krico", 70, 1, 1);
+                System.out.println("\n¡Has elegido a Krico! ¡Un agresivo Puchamon de tipo Agua!");
+                break;
+            default:
+                System.out.println("Opción no válida. Se ha asignado Lagasaur por defecto.");
+                puchaSeleccionado = new Puchamon(1, "Lagasaur", 100, 1, 1);
+        }
+        
+        return puchaSeleccionado;
+    }
+
     public static void menujuego(){
         System.out.println("+------- Menu ----------+");
         System.out.println("| 1. Selección Nivel    |");
@@ -48,40 +97,51 @@ public class AppPuchamon {
         System.out.println("| 4. Regalo Misterioso  |");
         System.out.println("| 5. Salir              |");
         System.out.println("+-----------------------+");
+    }
 
-        
+    public static void menuMundos(){
+        System.out.println("\n+========== MUNDOS ==========+");
+        System.out.println("| 1. Parla Centro            |");
+        System.out.println("| 2. Valde Moro              |");
+        System.out.println("| 3. El Bronx                |");
+        System.out.println("+============================+");
     }
 
     public void jueguito(){
         int opcionjuego;
-        Scanner miEscaner= new Scanner(System.in);
-        AppPuchamon app = new AppPuchamon();
+        Scanner miEscaner = new Scanner(System.in);
+        Puchamon puchaJugador = seleccionarPuchamon();
+        PuchamonDAO A1 = new PuchamonDAO();
+        InventarioDAO Inven1 = new InventarioDAO();
+       
         do
         {
             menujuego();
             opcionjuego = miEscaner.nextInt();
             switch (opcionjuego){
                 case 1:
-                    System.out.println("Escoge a que mundo quieres ir");
+                    menuMundos();
+                    System.out.print("Escoge a que mundo quieres ir: ");
                     int opcionMundo = miEscaner.nextInt();
                     switch(opcionMundo){
                         case 1: 
-                        System.out.println("bienvenido a parla centro");
-                        int opcionGym = miEscaner.nextInt();
-                        System.out.println("Es hora de combatir");
-
-                        break;
+                            System.out.println("Bienvenido a Parla Centro");
+                            System.out.println("Es hora de combatir");
+                            Mundo1 mundo1 = new Mundo1();
+                            mundo1.iniciarCombate(puchaJugador);
+                            break;
                         case 2: 
-                        System.out.println("bienvenido a valde moro");
-                        opcionGym = miEscaner.nextInt();
-                        System.out.println("Es hora de combatir");
-
-                        break;
+                            System.out.println("Bienvenido a Valde Moro");
+                            System.out.println("Es hora de combatir");
+                            Mundo2 mundo2 = new Mundo2();
+                            mundo2.iniciarCombate(puchaJugador);
+                            break;
                         case 3:
-                            System.out.println("bienvenido a el bronxs");
-                        opcionGym = miEscaner.nextInt();
-                        System.out.println("Es hora de combatir");
-                        break;
+                            System.out.println("Bienvenido a El Bronx");
+                            System.out.println("Es hora de combatir");
+                            Mundo3 mundo3 = new Mundo3();
+                            mundo3.iniciarCombate(puchaJugador);
+                            break;
                         default:
                             System.out.println("opcion incorrecta");
                     }
@@ -89,83 +149,45 @@ public class AppPuchamon {
                     break;
                 case 2:
                     System.out.println("Inventario");
+                    System.out.println("Id objeto 1 = pocion normal");
+                    System.out.println("Id objeto 2 = pocion Super Pocion");
+                    try{
+                        Connection conex = PruebaConexion.getConnection();
+
+                        List<Inventario> inven = Inven1.selectInventario(conex);
+                        for(Inventario Inven :inven){
+                            System.out.println(Inven);
+                        }
+                    } catch(Exception e){
+                            System.out.println("e");
+                        }
                     break;
                 case 3:
-                    System.out.println("Salir");
-                    System.out.println("Gracias por jugar a las Puchas Advetnturas");
+                    System.out.println("Bienvenido a la Puchadex");
+
+                    try{
+
+                        Connection conex = PruebaConexion.getConnection();
+
+                        List<Puchamon> puchamon = A1.selectPucha(conex);
+                        for(Puchamon puch:puchamon){
+                            System.out.println(puch);
+                        }
+
+                        } catch(Exception e){
+                            System.out.println("a");
+                        }
+                    break;
+                case 4:
+                    System.out.println("Bienvenido al Gachapon");
+                    break;
+                case 5:
                     break;
                 default:
                     System.out.println("Opcion no valida");
             }
 
-        } while (opcionjuego != 3);
+        } while ( opcionjuego != 5);
         
     }
-
-    public void Combate1(){
-        Scanner miEscaner= new Scanner(System.in);
-        AppPuchamon app = new AppPuchamon();
-        Puchamon pucha = new Puchamon("a", 1, 1, 1,"a","a");
-        Entrenador entrenador = new Entrenador(1, "Leo");
-        PuchaEnemigo puchaenemigo = new PuchaEnemigo(4, 40, "Jai");
-        int opcionCombate;
-
-        System.out.println("\n===== INICIO DEL COMBATE =====");
-        System.out.println("¡Te enfrentas al Entrenador A!");
-
-
-            // (TERMINAR CUANDO TENGAMOS LAS VARIABLES DE ENEMIGO)
-            while (pucha.getVida() > 0 && puchaenemigo.getVidaPuchaEnemigo() > 0) {
-
-            // Mostrar estado actual
-            System.out.println("\n+====== ESTADO DE COMBATE ======+");
-            System.out.println("| " + pucha.getNombrePuchamon() + " (Tuyo)    HP: " + pucha.getVida());
-            System.out.println("| Charmander (Enemigo)    HP: " + puchaenemigo.getVidaPuchaEnemigo()); 
-            System.out.println("+================================+\n");
-            
-            // Turno del jugador
-            System.out.println("¿Qué ataque deseas usar?");
-            System.out.println("1. Ataque Normal (30 daño)");
-            System.out.println("2. Ataque Especial (50 daño + crítico 30%)");
-            System.out.println("3. Objeto curativo (+30 vida)");
-            System.out.println("4. Huir");
-            System.out.print("Elige opción: ");
-
-            opcionCombate = miEscaner.nextInt();
-            int danoInfligido = 0;
-
-            switch (opcionCombate){
-                case 1:
-                    danoInfligido = 30;
-                    System.out.println("\n" + entrenador.getNombreEntrenador() + " usa ¡Ataque Normal!");
-                    System.out.println("Daño infligido: " + danoInfligido);
-                    puchaenemigo.getVidaPuchaEnemigo() -= danoInfligido;
-                    break;
-                case 2:
-                    AtaqueEspecial ataque = new AtaqueEspecial("Ataque Especial", 50, "agua");
-                    danoInfligido = 50;
-                    System.out.println("\n" + entrenador.getNombreEntrenador() + " usa ¡Ataque Especial!");
-                    
-                    if (ataque.CalcularCritico()){
-                        danoInfligido = danoInfligido * 2;
-                        System.out.println("¡¡GOLPE CRÍTICO!!");
-                    }
-                    System.out.println("Daño infligido: " + danoInfligido);
-                    puchaenemigo.getVidaPuchaEnemigo() -= danoInfligido;
-                    break;
-                case 3:
-                    int curacion = 30;
-                    pucha.getVida = Math.min(pucha.getVida + curacion);
-                    System.out.println("\n" + entrenador.getNombreEntrenador() + " se cura +30 HP");
-                    break;
-                case 4:
-                    System.out.println("\n¡Has escapado del combate!");
-                    return;
-                default:
-                    System.out.println("\nOpción no válida");
-                    continue;
-            }
-        }
-    }
 }
-

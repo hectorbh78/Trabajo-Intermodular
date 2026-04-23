@@ -13,6 +13,8 @@ public class PuchaEnemigo{
         this.vidaPuchaEnemigo = vidaPuchaEnemigo;
     }
 
+    //setters
+
     public String getNombrePuchaEnemigo(){
         return NombrePuchaEnemigo;
     }
@@ -24,7 +26,9 @@ public class PuchaEnemigo{
     public int getidPuchaEnemigo(){
         return idPuchaEnemigo;
     }
-
+ 
+    //getters
+    
     public void setNombrePuchaEnemigo(String NombreEnemigo){
         this.NombrePuchaEnemigo = NombrePuchaEnemigo;
     }

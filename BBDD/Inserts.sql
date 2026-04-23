@@ -75,7 +75,7 @@ INSERT INTO Ataque (Nombre, Daño, TipoDaño, idTipo) VALUES
 
 -- Puchamon
 INSERT INTO Puchamon (Nombre, Nivel, Vida, idEntrenador) VALUES 
-('Lagasur', 10, 35, 1),
+('Lagasaur', 10, 35, 1),
 ('Salasaur', 21, 65, 1),
 ('Dragasaur', 36, 90, 1),
 ('Jai', 12, 40, 2),

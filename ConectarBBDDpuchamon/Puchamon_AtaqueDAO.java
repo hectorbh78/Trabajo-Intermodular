@@ -2,13 +2,13 @@ package ConectarBBDDpuchamon;
 import PuchamonGris.*;
 import java.sql.*;
 import java.util.*;
-public class InventarioDAO{
 
-     public List<Inventario> selectInventario (Connection pruebaConexion) {
+public class Puchamon_AtaqueDAO{
+    public List<Puchamon_Ataque> selectPuchamon_Ataque (Connection pruebaConexion) {
 
-        String consulta = "select * from inventario";
+        String consulta = "select * from Puchamon_Ataque";
 
-        List<Inventario> inventario = new ArrayList<>();
+        List<Puchamon_Ataque> puchamonAtaque = new ArrayList<>();
 
          try(Statement stmt = pruebaConexion.createStatement();
             ResultSet resultado = stmt.executeQuery(consulta)){
@@ -21,16 +21,18 @@ public class InventarioDAO{
                 //el servidor y que se almacena en ResultSet
                 //para obtener los datos se utilizan métodos get
                 //obtenemos columna a columna
-                int idEntrenador = resultado.getInt("idEntrenador");
-                int idObjeto = resultado.getInt("idObjeto");
+                int idPuch = resultado.getInt("idPuch");
+                String idAtaque = resultado.getString("idAtaque");
+                String idAtaque2 = resultado.getString("idAtaque2");
 
 
-                Inventario invent = new Inventario(idEntrenador, idObjeto);
-                inventario.add(invent); //se añade el alumno a la lista
+                Puchamon_Ataque puchAtaq = new Puchamon_Ataque(idPuch, idAtaque, idAtaque2);
+                puchamonAtaque.add(puchAtaq); //se añade el alumno a la lista
             }
         } catch(SQLException e) {
             e.printStackTrace();
         }
     
-    return inventario;
-    }}
+    return puchamonAtaque;
+    }   
+}

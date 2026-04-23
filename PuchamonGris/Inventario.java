@@ -22,6 +22,14 @@ public class Inventario{
     public void setIdObjeto(int idObjeto) {
         this.idObjeto = idObjeto;
     }
+
+    @Override
+    public String toString() {
+        return "Inventario [idEntrenador =" + idEntrenador + ", idObjeto =" + idObjeto + "]";
+    }
+
+    
+    
     
 }
 

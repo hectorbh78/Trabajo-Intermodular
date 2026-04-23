@@ -10,7 +10,7 @@ public class Mision {
 
     
 public Mision(int idMision, String descripcion, String recompensa, int idMundo, int idObjeto) {
-        this.idObjeto = idObjeto;
+        this.idMision = idMision;
         this.descripcion = descripcion;
         this.recompensa = recompensa;
         this.idMundo = idMundo;

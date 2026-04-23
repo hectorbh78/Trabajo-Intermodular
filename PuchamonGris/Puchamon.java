@@ -38,6 +38,10 @@ public class Puchamon{
         return Vida;
     }
 
+    public void setVida(int vida) {
+        this.Vida = vida;
+    }
+
     public int getNivelPuchamon() {
         return nivelPuchamon;
     }
@@ -57,5 +61,13 @@ public class Puchamon{
     public boolean esDerrotado() {
         return Vida  <= 0;
     }
+
+    @Override
+    public String toString() {
+        return "Puchamon [idPuch = " + idPuch + ", Nombre Puchamon = " + NombrePuchamon + ", Vida = " + Vida
+                + ", Nivel Puchamon = " + nivelPuchamon + ", id Entrenador = " + idEntrenador + "]";
+    }
+
+    
     
 }
