@@ -1,38 +1,45 @@
 package PuchamonGris;
+
+// Clase Puchamon_Ataque (relaciona un Puchamon con sus ataques)
 public class Puchamon_Ataque {
 
-    int idPuch;
-    String ataque;
-    String ataque2;
+    // Variables
+    int idPuch;       // ID del Puchamon
+    int ataque;    // Primer ataque
+    int ataque2;   // Segundo ataque
 
-    public Puchamon_Ataque(int idPuch, String  ataque, String ataque2) {
+    // Constructor (crea el objeto con sus datos)
+    public Puchamon_Ataque(int idPuch, int ataque, int ataque2) {
         this.idPuch = idPuch;
         this.ataque = ataque;
         this.ataque2 = ataque2;
     }
+
+    // GETTERS (para obtener valores)
 
     public int getIdPuch() {
         return idPuch;
     }
 
+    public int getAtaque() {
+        return ataque;
+    }
+
+    public int getAtaque2() {
+        return ataque2;
+    }
+
+    // SETTERS (para modificar valores)
+
     public void setIdPuch(int idPuch) {
         this.idPuch = idPuch;
     }
 
-    public String getAtaque() {
-        return ataque;
-    }
-
-    public void setAtaque(String ataque) {
+    public void setAtaque(int ataque) {
         this.ataque = ataque;
     }
 
-    public String getAtaque2() {
-        return ataque2;
-    }
-
-    public void setAtaque2(String ataque2) {
+    public void setAtaque2(int ataque2) {
         this.ataque2 = ataque2;
     }
 }
-

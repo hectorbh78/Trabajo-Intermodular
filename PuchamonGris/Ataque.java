@@ -1,25 +1,28 @@
 package PuchamonGris;
-import java.util.*;
 
+import java.util.*; // Para usar Random
+
+// Clase Ataque (representa un ataque de un Puchamon)
 public class Ataque {
 
-    // Variables
-    int idAtaque;
-    int daño;
-    String nombre;
-    String tipoDamage;
-    int idTipo;
+    // Variables (atributos del ataque)
+    int idAtaque;      // ID del ataque
+    int daño;          // Daño que hace el ataque
+    String nombre;     // Nombre del ataque
+    String tipoDaño; // Tipo de daño (ej: fuego, agua, etc)
+    int idTipo;        // ID del tipo
 
-    // Constructor
-    public Ataque(int idAtaque, String nombre, int daño, String tipoDamage, int idTipo){
+    // Constructor (sirve para crear un ataque con valores)
+    public Ataque(int idAtaque, String nombre, int daño, String tipoDaño, int idTipo){
         this.idAtaque = idAtaque;
         this.daño = daño;
         this.nombre = nombre;
-        this.tipoDamage = tipoDamage;
+        this.tipoDaño = tipoDaño;
         this.idTipo = idTipo;
     }
 
-    // Getters
+    // Getters (para obtener valores)
+
     public int getDamage() {
         return daño;
     }
@@ -29,7 +32,7 @@ public class Ataque {
     }
 
     public String getTipoDamage() {
-        return tipoDamage;
+        return tipoDaño;
     }
 
     public int getIdTipo() {
@@ -40,7 +43,8 @@ public class Ataque {
         return idAtaque;
     }
 
-    // Setters
+    // Setters (para modificar valores)
+
     public void setDamage(int daño){
         this.daño = daño;
     }
@@ -50,7 +54,7 @@ public class Ataque {
     }
 
     public void setTipoDamage(String tipoDamage) {
-        this.tipoDamage = tipoDamage;
+        this.tipoDaño = tipoDamage;
     }
 
     public void setIdAtaque(int idAtaque) {
@@ -61,15 +65,15 @@ public class Ataque {
         this.idTipo = idTipo;
     }
 
-    // Probabilidad del 10% para crítico especial
+    // Método que calcula si hay crítico especial (10% probabilidad)
     public boolean CalcularCriticoEspecial(){
-        Random rand = new Random();
-        return rand.nextDouble() < 0.1;
+        Random rand = new Random(); // Genera número aleatorio
+        return rand.nextDouble() < 0.1; // 10% de probabilidad
     }
 
-    // Probabilidad del 20% para crítico normal
+    // Método que calcula si hay crítico normal (20% probabilidad)
     public boolean CalcularCriticoNormal(){
         Random rand = new Random();
-        return rand.nextDouble() < 0.2;
+        return rand.nextDouble() < 0.2; // 20% de probabilidad
     }
 }

@@ -13,7 +13,7 @@ El jugador deberá:
 
 - 🐾 Elegir a sus Puchamones  
 - ⚔️ Usar ataques estratégicamente  
-- 🤖 Derrotar a la IA enemiga  
+- 🤖 Derrotar al entrenador enemigo
 - 🏆 Convertirse en el mejor entrenador  
 
 ---
@@ -34,7 +34,7 @@ El proyecto sigue los principios de **Programación Orientada a Objetos (POO)**,
 | Capa | Descripción |
 |------|-------------|
 | 🧬 **Entidades (Modelos)** | Representan el dominio principal: `Puchamon`, `Entrenador`, `Movimiento`. |
-| ⚙️ **Lógica del Juego** | Gestiona combates, turnos, daño y decisiones de la IA. |
+| ⚙️ **Lógica del Juego** | Gestiona combates, turnos, daño y decisiones del contrincante. |
 | 🖥️ **Interfaz de Usuario** | Sistema por consola usando `Scanner` para interactuar con el jugador. |
 
 ---
@@ -127,10 +127,10 @@ Desarrollado como parte del **Trabajo Intermodular**.
 # ⭐ Futuras Mejoras
 
 - 🎨 Interfaz gráfica  
-- 🌍 Modo multijugador online  
-- 🐉 Nuevos Puchamones  
-- ⚔️ Más tipos de ataques  
-- 💾 Sistema de guardado  
+- 🌍 Modo multijugador online
+- 🐉 Nuevos Puchamones
+- ⚔️ Más tipos de ataques
+- 💾 Sistema de guardado
 
 ---
 

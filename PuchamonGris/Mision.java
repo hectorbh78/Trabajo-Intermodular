@@ -1,15 +1,17 @@
-
 package PuchamonGris;
+
+// Clase Mision (representa una misión dentro del juego)
 public class Mision {
 
-    int idMision;
-    String descripcion;
-    String recompensa;
-    int idMundo;
-    int idObjeto;
+    // Variables de la misión
+    int idMision;        // ID de la misión
+    String descripcion;   // Qué hay que hacer en la misión
+    String recompensa;    // Recompensa al completarla
+    int idMundo;          // Mundo donde está la misión
+    int idObjeto;         // Objeto relacionado con la misión
 
-    
-public Mision(int idMision, String descripcion, String recompensa, int idMundo, int idObjeto) {
+    // Constructor (para crear una misión con datos)
+    public Mision(int idMision, String descripcion, String recompensa, int idMundo, int idObjeto) {
         this.idMision = idMision;
         this.descripcion = descripcion;
         this.recompensa = recompensa;
@@ -17,7 +19,7 @@ public Mision(int idMision, String descripcion, String recompensa, int idMundo, 
         this.idObjeto = idObjeto;
     }
 
-    ///setters 
+    // SETTERS (para modificar valores)
 
     public void setIdMision(int idMision) {
         this.idMision = idMision;
@@ -39,8 +41,7 @@ public Mision(int idMision, String descripcion, String recompensa, int idMundo, 
         this.idObjeto = idObjeto;
     }
 
-    
-    //getters 
+    // GETTERS (para obtener valores)
 
     public int getIdMision() {
         return idMision;
@@ -61,5 +62,4 @@ public Mision(int idMision, String descripcion, String recompensa, int idMundo, 
     public int getIdObjeto() {
         return idObjeto;
     }
-    
 }

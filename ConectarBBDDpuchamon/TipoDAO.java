@@ -1,38 +1,49 @@
 package ConectarBBDDpuchamon;
+
 import PuchamonGris.*;
 import java.sql.*;
 import java.util.*;
 
-public class TipoDAO{
-    public List<Tipo> selectTipo (Connection pruebaConexion) {
+// DAO de Tipo (lee los tipos de Puchamon desde la base de datos)
+public class TipoDAO {
 
-        String consulta = "select * from tipo";
+    // Método que devuelve la lista de tipos desde la BD
+    public List<Tipo> selectTipo(Connection pruebaConexion) {
 
+        // Consulta SQL para obtener todos los tipos
+        String consulta = "SELECT * FROM tipo";
+
+        // Lista donde se guardan los tipos
         List<Tipo> tipo = new ArrayList<>();
 
-        try(Statement stmt = pruebaConexion.createStatement();
-            ResultSet resultado = stmt.executeQuery(consulta)){
+        try(
+            // Creamos la sentencia SQL
+            Statement stmt = pruebaConexion.createStatement();
 
-            //en el try se ha creado la sentencia y se ha ejecutado la query
-            //si no se sale por el catch, es que ha ido bien, queda recorrer los resultados
+            // Ejecutamos la consulta y guardamos resultados
+            ResultSet resultado = stmt.executeQuery(consulta)
+        ){
 
+            // Recorremos cada fila de la tabla tipo
             while(resultado.next()) {
-                //next() se va desplazando por el conjunto de resultados que devuelve
-                //el servidor y que se almacena en ResultSet
-                //para obtener los datos se utilizan métodos get
-                //obtenemos columna a columna
+
+                // Sacamos los datos de cada columna
                 int idTipo = resultado.getInt("idTipo");
                 String nombre = resultado.getString("nombre");
-                
 
+                // Creamos el objeto Tipo con los datos
+                Tipo tip = new Tipo(idTipo, nombre);
 
-                Tipo tip = new Tipo(idTipo,nombre);
-                tipo.add(tip); //se añade el alumno a la lista
+                // Lo añadimos a la lista
+                tipo.add(tip);
             }
+
         } catch(SQLException e) {
+            // Si hay error en la BD lo muestra
             e.printStackTrace();
         }
-    
-    return tipo;
+
+        // Devolvemos la lista completa de tipos
+        return tipo;
     }
 }

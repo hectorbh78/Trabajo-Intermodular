@@ -1,46 +1,31 @@
 package ConectarBBDDpuchamon;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+// Clase para crear la conexión con la base de datos
 public class PruebaConexion {
+
+    // Método que devuelve la conexión a la BD
     public static Connection getConnection() throws Exception {
-        // Datos de tu base de datos local
-       
 
         try {
 
-            String url = "jdbc:mysql://localhost:3306/DBPuchamon"; 
+            // URL de conexión a MySQL (localhost y nombre de la BD)
+            String url = "jdbc:mysql://localhost:3306/DBPuchamon";
+
+            // Usuario de la base de datos
             String user = "root";
+
+            // Contraseña de la base de datos
             String pass = "mysql";
 
-        
+            // Se crea y devuelve la conexión
             return DriverManager.getConnection(url, user, pass);
+
         } catch (Exception e) {
-            throw (e);
+            // Si falla la conexión, se lanza la excepción
+            throw e;
         }
     }
-} 
-
-
-/*0
-//EJEMPLO UPDATE
-public boolean actualizaJefeDpto (Connection conexion, DepartamentoVO departamento) {
-
-String update = "UPDATE departamento SET dni = ? WHERE coddep = ?";
-
-try(PreparedStatement stmt = conexion. prepareStatement(update) ){
-//se asignan los valores al update (sentencia preparada)
-
-stmt.setString(1,departamento.getDni());
-stmt.setInt(2,departamento.getCodDep());
-
-//la sentencia UPDATE se ejecuta con executeUpdate
-return stmt.executeUpdate()>0?true:false;
-
-catch(SQLException e) {
-e.printStackTrace();
-return false;
-
 }
-}
-} */

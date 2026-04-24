@@ -15,7 +15,7 @@ INSERT INTO Tipo (Nombre) VALUES
 ('Normal'),
 ('Navaja'),
 ('Explosivo'),
-('Acero'),
+('Acero');
 
 -- Entrenador
 INSERT INTO Entrenador (Nombre) VALUES 
@@ -26,12 +26,15 @@ INSERT INTO Entrenador (Nombre) VALUES
 
 -- Gimnasio
 INSERT INTO Gimnasio (Nombre, NivelRecomendado, idMundo) VALUES 
-('Gimnasio Maleante', 10, 1),
-('Gimnasio Duro', 20, 1),
-('Gimnasio Cuencos', 5, 2),
-('Gimnasio Pastelito de Fresa', 2, 2),
-('Gimnasio Tren Molon', 8, 3),
-('Gimnasio Ibuprofeno', 9, 3);
+('Gimnasio Maleante', 15, 1),
+('Gimnasio Duro', 17, 1),
+('Gimnasio Cuencos', 19, 1),
+('Gimnasio Pastelito de Fresa', 21, 2),
+('Gimnasio Tren Molon', 24, 2),
+('Gimnasio Ibuprofeno', 27, 2),
+('Gimnasio Flexolandia', 29, 3),
+('Gimnasio Rattatatata Fitness', 31, 3),
+('Gimnasio PuchaFit', 34, 3);
 
 -- Mision (sin objeto aún)
 INSERT INTO Mision (Descripcion, Recompensa, idMundo, idObjeto) VALUES 
@@ -58,32 +61,29 @@ UPDATE Mision SET idObjeto = 3 WHERE idMision = 6;
 
 -- Inventario (N:M)
 INSERT INTO Inventario VALUES 
-(1,1),
-(1,2),
-(2,1),
-(4,1),
-(3,1);
+(1,1,0),
+(1,2,0);
 
 -- Ataque
 INSERT INTO Ataque (Nombre, Daño, TipoDaño, idTipo) VALUES 
-('Navajazo', 40, 'Normal', 7),
-('Super Navajazo', 60, 'Especial', 8),
-('Coletazo', 50, 'Normal', 7),
-('Tajo Supremo', 30, 'Especial', 3),
+('Navajazo', 30, 'Normal', 7),
+('Super Navajazo', 50, 'Especial', 8),
+('Coletazo', 30, 'Normal', 7),
+('Tajo Supremo', 50, 'Especial', 3),
 ('Arañazo', 30, 'Normal', 7),
-('Aqua Jet', 30, 'Especial', 2);
+('Aqua Jet', 50, 'Especial', 2);
 
 -- Puchamon
 INSERT INTO Puchamon (Nombre, Nivel, Vida, idEntrenador) VALUES 
-('Lagasaur', 10, 35, 1),
-('Salasaur', 21, 65, 1),
-('Dragasaur', 36, 90, 1),
-('Jai', 12, 40, 2),
-('Nava-Jazo', 22, 55, 1),
-('Tapu-Ñalo', 38, 110, 1),
-('Rico', 10, 35, 1),
-('Krico', 20, 50, 1),
-('Krico: Hulkbuster', 40, 120, 1);
+('Lagasaur', 10, 100, 1),
+('Salasaur', 23, 130, 1),
+('Dragasaur', 33, 175, 1),
+('Jai', 10, 90, 2),
+('Nava-Jazo', 24, 110, 2),
+('Tapu-Ñalo', 35, 142, 2),
+('Rico', 10, 97, 1),
+('Krico', 20, 124, 1),
+('Krico: Hulkbuster', 30, 159, 1);
 
 -- TipoPuchamon (N:M)
 INSERT INTO TipoPuchamon VALUES 

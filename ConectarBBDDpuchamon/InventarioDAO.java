@@ -1,36 +1,66 @@
 package ConectarBBDDpuchamon;
+
 import PuchamonGris.*;
 import java.sql.*;
 import java.util.*;
-public class InventarioDAO{
 
-     public List<Inventario> selectInventario (Connection pruebaConexion) {
+// DAO de Inventario (lee los objetos que tiene cada entrenador)
+public class InventarioDAO {
 
-        String consulta = "select * from inventario";
+    // Método que devuelve la lista del inventario desde la BD
+    public List<Inventario> selectInventario(Connection pruebaConexion) {
 
+        // Consulta SQL para sacar todos los registros del inventario
+        String consulta = "SELECT * FROM inventario";
+
+        // Lista donde se guardan los objetos del inventario
         List<Inventario> inventario = new ArrayList<>();
 
-         try(Statement stmt = pruebaConexion.createStatement();
-            ResultSet resultado = stmt.executeQuery(consulta)){
+        try(
+            // Creamos la sentencia SQL
+            Statement stmt = pruebaConexion.createStatement();
 
-            //en el try se ha creado la sentencia y se ha ejecutado la query
-            //si no se sale por el catch, es que ha ido bien, queda recorrer los resultados
+            // Ejecutamos la consulta y guardamos resultados
+            ResultSet resultado = stmt.executeQuery(consulta)
+        ){
 
+            // Recorremos cada fila del resultado
             while(resultado.next()) {
-                //next() se va desplazando por el conjunto de resultados que devuelve
-                //el servidor y que se almacena en ResultSet
-                //para obtener los datos se utilizan métodos get
-                //obtenemos columna a columna
+
+                // Sacamos los datos de cada columna
                 int idEntrenador = resultado.getInt("idEntrenador");
                 int idObjeto = resultado.getInt("idObjeto");
+                int numObjetos = resultado.getInt("numObjetos");
 
+                // Creamos el objeto Inventario
+                Inventario invent = new Inventario(idEntrenador, idObjeto, numObjetos);
 
-                Inventario invent = new Inventario(idEntrenador, idObjeto);
-                inventario.add(invent); //se añade el alumno a la lista
+                // Lo añadimos a la lista
+                inventario.add(invent);
             }
+
         } catch(SQLException e) {
+            // Si hay error en la base de datos lo mostramos
             e.printStackTrace();
         }
-    
-    return inventario;
-    }}
+
+        // Devolvemos la lista completa del inventario
+        return inventario;
+    }
+
+    public void insertarInventario(Connection con, int idEntrenador, int idObjeto) {
+
+    String sql = "UPDATE inventario SET numObjetos = numObjetos + 1 WHERE idEntrenador = ? AND idObjeto = ?";
+
+    try (PreparedStatement stmt = con.prepareStatement(sql)) {
+
+        stmt.setInt(1, idEntrenador);
+        stmt.setInt(2, idObjeto);
+
+        stmt.executeUpdate();
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+}

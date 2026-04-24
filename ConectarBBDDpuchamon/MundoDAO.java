@@ -1,38 +1,50 @@
 package ConectarBBDDpuchamon;
+
 import PuchamonGris.*;
 import java.sql.*;
 import java.util.*;
 
-public class MundoDAO{
-    public List<Mundo> selectMundo (Connection pruebaConexion) {
+// DAO de Mundo (lee los mundos desde la base de datos)
+public class MundoDAO {
 
-        String consulta = "select * from mundo";
+    // Método que devuelve todos los mundos de la BD
+    public List<Mundo> selectMundo(Connection pruebaConexion) {
 
+        // Consulta SQL para sacar todos los mundos
+        String consulta = "SELECT * FROM mundo";
+
+        // Lista donde se guardan los mundos
         List<Mundo> mundo = new ArrayList<>();
 
-         try(Statement stmt = pruebaConexion.createStatement();
-            ResultSet resultado = stmt.executeQuery(consulta)){
+        try(
+            // Creamos la sentencia SQL
+            Statement stmt = pruebaConexion.createStatement();
 
-            //en el try se ha creado la sentencia y se ha ejecutado la query
-            //si no se sale por el catch, es que ha ido bien, queda recorrer los resultados
+            // Ejecutamos la consulta y guardamos el resultado
+            ResultSet resultado = stmt.executeQuery(consulta)
+        ){
 
+            // Recorremos cada fila de la tabla mundo
             while(resultado.next()) {
-                //next() se va desplazando por el conjunto de resultados que devuelve
-                //el servidor y que se almacena en ResultSet
-                //para obtener los datos se utilizan métodos get
-                //obtenemos columna a columna
+
+                // Sacamos los datos de cada columna
                 int idMundo = resultado.getInt("idMundo");
                 String nombre = resultado.getString("nombre");
                 String region = resultado.getString("region");
 
+                // Creamos el objeto Mundo con los datos
+                Mundo mund = new Mundo(idMundo, nombre, region);
 
-                Mundo mund = new Mundo(idMundo,nombre,region);
-                mundo.add(mund); //se añade el alumno a la lista
+                // Lo añadimos a la lista
+                mundo.add(mund);
             }
+
         } catch(SQLException e) {
+            // Si hay error en la base de datos lo mostramos
             e.printStackTrace();
         }
-    
-    return mundo;
+
+        // Devolvemos la lista completa de mundos
+        return mundo;
     }
 }

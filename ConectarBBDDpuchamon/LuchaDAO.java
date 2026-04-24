@@ -1,44 +1,67 @@
 package ConectarBBDDpuchamon;
+
 import PuchamonGris.*;
 import java.sql.*;
 import java.util.*;
 import java.time.*;
 
+// DAO de Lucha (lee las batallas desde la base de datos)
+public class LuchaDAO {
 
+    // Método que devuelve la lista de luchas desde la BD
+    public List<Lucha> selectLucha(Connection pruebaConexion) {
 
-public class LuchaDAO{
-    public List<Lucha> selectLucha (Connection pruebaConexion) {
+        // Consulta SQL para obtener todas las luchas
+        String consulta = "SELECT * FROM lucha";
 
-        String consulta = "select * from lucha";
-
+        // Lista donde se guardan las luchas
         List<Lucha> lucha = new ArrayList<>();
 
-        try(Statement stmt = pruebaConexion.createStatement();
-            ResultSet resultado = stmt.executeQuery(consulta)){
+        try(
+            // Creamos la sentencia SQL
+            Statement stmt = pruebaConexion.createStatement();
 
-            //en el try se ha creado la sentencia y se ha ejecutado la query
-            //si no se sale por el catch, es que ha ido bien, queda recorrer los resultados
+            // Ejecutamos la consulta y guardamos resultados
+            ResultSet resultado = stmt.executeQuery(consulta)
+        ){
 
+            // Recorremos cada fila de la tabla lucha
             while(resultado.next()) {
-                //next() se va desplazando por el conjunto de resultados que devuelve
-                //el servidor y que se almacena en ResultSet
-                //para obtener los datos se utilizan métodos get
-                //obtenemos columna a columna
+
+                // Sacamos los datos de cada columna
                 int idLucha = resultado.getInt("idLucha");
+
+                // Convertimos la fecha de SQL a LocalDate de Java
                 LocalDate fecha = resultado.getDate("fecha").toLocalDate();
+
                 String tipo = resultado.getString("tipo");
                 int idEntrenador = resultado.getInt("idEntrenador");
-                int idGimnasio = resultado.getInt("idGimansio");
+
+                // OJO: posible error de escritura en BD (idGimansio)
+                int idGimnasio = resultado.getInt("idGimnasio");
+
                 int idEntrenadorEnemigo = resultado.getInt("idEntrenadorEnemigo");
 
+                // Creamos el objeto Lucha con los datos obtenidos
+                Lucha luch = new Lucha(
+                    idLucha,
+                    fecha,
+                    tipo,
+                    idGimnasio,
+                    idEntrenador,
+                    idEntrenadorEnemigo
+                );
 
-                Lucha luch = new Lucha(idLucha, fecha, tipo, idGimnasio, idEntrenador, idEntrenadorEnemigo);
-                lucha.add(luch); //se añade el alumno a la lista
+                // Añadimos la lucha a la lista
+                lucha.add(luch);
             }
+
         } catch(SQLException e) {
+            // Si hay error en la BD lo mostramos
             e.printStackTrace();
         }
-    
-    return lucha;
-}
+
+        // Devolvemos la lista completa de luchas
+        return lucha;
+    }
 }

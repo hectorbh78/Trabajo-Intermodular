@@ -1,107 +1,169 @@
 package PuchamonGris;
-import java.util.Scanner;
-import java.util.*;
 
+import java.sql.Connection;
+import java.util.Scanner;
+
+import ConectarBBDDpuchamon.InventarioDAO;
+import ConectarBBDDpuchamon.PruebaConexion;
+
+// Clase Mundo2 (segundo mundo del juego)
 public class Mundo2 {
     
+    // Método que inicia el combate en este mundo
     public void iniciarCombate(Puchamon puchaJugador) {
+        
         Scanner scanner = new Scanner(System.in);
-        PuchaEnemigo puchaEnemigo = new PuchaEnemigo(2, 50, "Charmander");
+
+        // Creamos el Puchamon enemigo
+        PuchaEnemigo puchaEnemigo = new PuchaEnemigo(2, 128, "Charmander");
+
+        // Creamos el entrenador enemigo
         EntrenadorEnemigo entrenadorEnemigo = new EntrenadorEnemigo(2, "Leo");
         
+        // Guardamos la vida inicial de ambos
         int vidaJugador = puchaJugador.getVida();
         int vidaEnemigo = puchaEnemigo.getVidaPuchaEnemigo();
+
         int opcionCombate;
         
+        // Mensaje inicial del combate
         System.out.println("\n====== VALDE MORO - COMBATE ======");
         System.out.println("¡Te enfrentas a " + entrenadorEnemigo.getNombreEntrenadorEnemigo() + "!");
-        System.out.println(puchaEnemigo.getNombrePuchaEnemigo() + " (Puchamon Enemigo) ha entrado en combate");
-        System.out.println(puchaJugador.getNombrePuchamon() + " (Tu Puchamon) está listo\n");
-        System.out.println("====================================\n");
+        System.out.println(puchaEnemigo.getNombrePuchaEnemigo() + " ha entrado en combate");
+        System.out.println(puchaJugador.getNombrePuchamon() + " está listo\n");
         
+        // Bucle del combate (hasta que alguien se quede sin vida)
         while(vidaJugador > 0 && vidaEnemigo > 0){
+            
+            // Mostrar estado actual
             System.out.println("\n======== ESTADO DE COMBATE =======");
-            System.out.println("| " + puchaJugador.getNombrePuchamon() + " (Tu Puchamon)    HP: " + vidaJugador + "/" + puchaJugador.getVida());
-            System.out.println("| " + puchaEnemigo.getNombrePuchaEnemigo() + " (Puchamon Enemigo)    HP: " + vidaEnemigo + "/" + puchaEnemigo.getVidaPuchaEnemigo());
+            System.out.println("| " + puchaJugador.getNombrePuchamon() + " HP: " + vidaJugador);
+            System.out.println("| " + puchaEnemigo.getNombrePuchaEnemigo() + " HP: " + vidaEnemigo);
             System.out.println("==================================\n");
             
+            // Menú de acciones
             System.out.println("¿Qué ataque deseas usar?");
-            System.out.println("1. Ataque Normal (30 daño + crítico 20%)");
-            System.out.println("2. Ataque Especial (50 daño + crítico 10%)");
-            System.out.println("3. Objeto curativo (+30 vida)");
+            System.out.println("1. Ataque Normal (30 Atk + 20% Crit)");
+            System.out.println("2. Ataque Especial (50 Atk + 10% Crit)");
+            System.out.println("3. Objeto curativo (+30 PS)");
             System.out.println("4. Huir");
             System.out.print("Elige opción: ");
             
             opcionCombate = scanner.nextInt();
             int danoInfligido = 0;
             
+            // Turno del jugador
             switch (opcionCombate){
                 case 1:
+                    // Ataque normal
                     danoInfligido = 30;
-                    System.out.println("\n" + puchaJugador.getNombrePuchamon() + " usa ¡Ataque Normal!");
-                    System.out.println("Daño infligido: " + danoInfligido);
+                    System.out.println("Usas ataque normal");
                     vidaEnemigo -= danoInfligido;
                     break;
+
                 case 2:
+                    // Ataque especial con crítico posible
                     Ataque ataque = new Ataque(2, "Ataque Especial", 50, "fuego", 1);
                     danoInfligido = 50;
-                    System.out.println("\n" + puchaJugador.getNombrePuchamon() + " usa ¡Ataque Especial!");
-                    
+
+                    System.out.println("Usas ataque especial");
+
                     if (ataque.CalcularCriticoEspecial()){
                         danoInfligido = danoInfligido * 2;
                         System.out.println("¡¡GOLPE CRÍTICO!!");
                     }
-                    System.out.println("Daño infligido: " + danoInfligido);
+
                     vidaEnemigo -= danoInfligido;
                     break;
+
                 case 3:
+                    // Curación del jugador
                     int curacion = 30;
                     vidaJugador = Math.min(vidaJugador + curacion, puchaJugador.getVida());
-                    System.out.println("\n" + puchaJugador.getNombrePuchamon() + " se cura +30 HP");
+                    System.out.println("Te curas +30 HP");
                     break;
+
                 case 4:
-                    System.out.println("\n¡Has escapado del combate!");
+                    // Huir del combate
+                    System.out.println("¡Has escapado del combate!");
                     return;
+
                 default:
-                    System.out.println("\nOpción no válida");
+                    System.out.println("Opción no válida");
                     continue;
             }
             
+            // Si el enemigo muere, se termina el combate
             if(vidaEnemigo <= 0) break;
             
-            System.out.println("\n" + puchaEnemigo.getNombrePuchaEnemigo() + " ataca...");
+            // Turno del enemigo
+            System.out.println("\nTu atacas...");
+            System.out.println("\nEl enemigo ataca...");
+            
             int ataqueEnemigo = (int)(Math.random() * 2) + 1;
             int danoRecibido = 0;
             
             if(ataqueEnemigo == 1){
+                // Ataque normal enemigo
                 danoRecibido = 28;
-                System.out.println(puchaEnemigo.getNombrePuchaEnemigo() + " usa ¡Ataque Normal!");
+                System.out.println("Ataque normal del enemigo");
             } else {
+                // Ataque especial enemigo
                 danoRecibido = 40;
+
+                // Probabilidad de crítico
                 if(Math.random() < 0.3){
                     danoRecibido *= 2;
-                    System.out.println(puchaEnemigo.getNombrePuchaEnemigo() + " usa ¡Ataque Especial! ¡¡CRÍTICO!!");
+                    System.out.println("¡¡CRÍTICO DEL ENEMIGO!!");
                 } else {
-                    System.out.println(puchaEnemigo.getNombrePuchaEnemigo() + " usa ¡Ataque Especial!");
+                    System.out.println("Ataque especial del enemigo");
                 }
             }
-            System.out.println("Daño recibido: " + danoRecibido);
+
+            // Se aplica el daño al jugador
             vidaJugador -= danoRecibido;
         }
         
+        // Resultado final del combate
         System.out.println("\n===== RESULTADO DEL COMBATE =====");
         if(vidaJugador > 0){
             System.out.println("¡¡VICTORIA!!");
-            System.out.println(puchaJugador.getNombrePuchamon() + " ha vencido a " + puchaEnemigo.getNombrePuchaEnemigo());
-            System.out.println("¡Has ganado 600 exp y 350 pesos!");
+            
+            // Función de evolución
+            System.out.println("¡" + puchaJugador.getNombrePuchamon() + " está evolucionando!");
+            if(puchaJugador.getNombrePuchamon().equals("Salasaur")) {
+                puchaJugador.setNombrePuchamon("Dragasaur");
+                puchaJugador.setVida(175);
+            } else if(puchaJugador.getNombrePuchamon().equals("Nava-Jazo")) {
+                puchaJugador.setNombrePuchamon("Tapu-Ñalo");
+                puchaJugador.setVida(142);
+            } else if(puchaJugador.getNombrePuchamon().equals("Krico")) {
+                puchaJugador.setNombrePuchamon("Krico: Hulkbuster");
+                puchaJugador.setVida(159);
+            }
+            puchaJugador.setNivelPuchamon(36);
+            vidaJugador = puchaJugador.getVida(); // Restaurar vida tras evolucionar
+            System.out.println("¡Ahora es un " + puchaJugador.getNombrePuchamon() + " Nivel " + puchaJugador.getNivelPuchamon() + "!");
+
+            // Función insertar objeto
+            System.out.println("\n¡Has obtenido una Super Poción!");
+            try {
+                Connection conex = PruebaConexion.getConnection();
+                InventarioDAO i1 = new InventarioDAO();
+
+                // Aquí llamamos al método del DAO para insertar el objeto
+                i1.insertarInventario(conex, 1, 2); 
+                System.out.println("Sistema: El objeto ha sido guardado en tu inventario.");
+            } catch (Exception e) {
+                System.out.println("Error al actualizar la base de datos: " + e.getMessage());
+            }
+            System.out.println("==================================\n");
+            
         } else {
             System.out.println("¡¡DERROTA!!");
-            System.out.println(puchaEnemigo.getNombrePuchaEnemigo() + " ha vencido a " + puchaJugador.getNombrePuchamon());
-            System.out.println("Deberás intentarlo de nuevo...");
         }
         puchaJugador.setVida(vidaJugador);
-        System.out.println("==================================\n");
-        System.out.println("Presiona Enter para volver al menú...");
-        scanner.nextLine();
+        System.out.println("Presiona Enter para volver...");
+        scanner.nextLine(); scanner.nextLine();
     }
 }

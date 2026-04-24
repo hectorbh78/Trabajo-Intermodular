@@ -1,39 +1,51 @@
 package ConectarBBDDpuchamon;
+
 import PuchamonGris.*;
 import java.sql.*;
 import java.util.*;
 
+// DAO de Gimnasio (lee gimnasios desde la base de datos)
+public class GimnasioDAO {
 
-public class GimnasioDAO{
-    public List<Gimnasio> selectGimnasio (Connection pruebaConexion) {
+    // Método que devuelve la lista de gimnasios de la BD
+    public List<Gimnasio> selectGimnasio(Connection pruebaConexion) {
 
-        String consulta = "select * from gimnasio";
+        // Consulta SQL para obtener todos los gimnasios
+        String consulta = "SELECT * FROM gimnasio";
 
+        // Lista donde se guardan los gimnasios
         List<Gimnasio> gimnasio = new ArrayList<>();
 
-         try(Statement stmt = pruebaConexion.createStatement();
-            ResultSet resultado = stmt.executeQuery(consulta)){
+        try(
+            // Creamos la sentencia SQL
+            Statement stmt = pruebaConexion.createStatement();
 
-            //en el try se ha creado la sentencia y se ha ejecutado la query
-            //si no se sale por el catch, es que ha ido bien, queda recorrer los resultados
+            // Ejecutamos la consulta y guardamos el resultado
+            ResultSet resultado = stmt.executeQuery(consulta)
+        ){
 
+            // Recorremos cada fila de la tabla gimnasio
             while(resultado.next()) {
-                //next() se va desplazando por el conjunto de resultados que devuelve
-                //el servidor y que se almacena en ResultSet
-                //para obtener los datos se utilizan métodos get
-                //obtenemos columna a columna
+
+                // Obtenemos los datos de cada columna
                 int idGimnasio = resultado.getInt("idGimnasio");
                 String nombre = resultado.getString("nombre");
                 int NivelRecomendado = resultado.getInt("NivelRecomendado");
                 int idMundo = resultado.getInt("idMundo");
 
-                Gimnasio gym = new Gimnasio(idGimnasio,nombre,NivelRecomendado,idMundo);
-                gimnasio.add(gym); //se añade el alumno a la lista
+                // Creamos el objeto Gimnasio con los datos
+                Gimnasio gym = new Gimnasio(idGimnasio, nombre, NivelRecomendado, idMundo);
+
+                // Añadimos el gimnasio a la lista
+                gimnasio.add(gym);
             }
+
         } catch(SQLException e) {
+            // Si hay error en la BD lo mostramos
             e.printStackTrace();
         }
-    
-    return gimnasio;
+
+        // Devolvemos la lista completa de gimnasios
+        return gimnasio;
     }
 }

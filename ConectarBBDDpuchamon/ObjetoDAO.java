@@ -1,39 +1,51 @@
 package ConectarBBDDpuchamon;
+
 import PuchamonGris.*;
 import java.sql.*;
 import java.util.*;
 
-public class ObjetoDAO{
-    public List<Objeto> selectObjeto (Connection pruebaConexion) {
+// DAO de Objeto (lee objetos desde la base de datos)
+public class ObjetoDAO {
 
-        String consulta = "select * from objeto";
+    // Método que devuelve todos los objetos de la BD
+    public List<Objeto> selectObjeto(Connection pruebaConexion) {
 
+        // Consulta SQL para sacar todos los objetos
+        String consulta = "SELECT * FROM objeto";
+
+        // Lista donde se guardan los objetos
         List<Objeto> objeto = new ArrayList<>();
 
-         try(Statement stmt = pruebaConexion.createStatement();
-            ResultSet resultado = stmt.executeQuery(consulta)){
+        try(
+            // Creamos la sentencia SQL
+            Statement stmt = pruebaConexion.createStatement();
 
-            //en el try se ha creado la sentencia y se ha ejecutado la query
-            //si no se sale por el catch, es que ha ido bien, queda recorrer los resultados
+            // Ejecutamos la consulta y guardamos el resultado
+            ResultSet resultado = stmt.executeQuery(consulta)
+        ){
 
+            // Recorremos cada fila de la tabla objeto
             while(resultado.next()) {
-                //next() se va desplazando por el conjunto de resultados que devuelve
-                //el servidor y que se almacena en ResultSet
-                //para obtener los datos se utilizan métodos get
-                //obtenemos columna a columna
+
+                // Sacamos los datos de cada columna
                 int idObjeto = resultado.getInt("idObjeto");
                 String nombre = resultado.getString("nombre");
                 String efecto = resultado.getString("efecto");
                 int idMision = resultado.getInt("idMision");
 
-
+                // Creamos el objeto Objeto con los datos
                 Objeto obtj = new Objeto(idObjeto, nombre, efecto, idMision);
-                objeto.add(obtj); //se añade el alumno a la lista
+
+                // Lo añadimos a la lista
+                objeto.add(obtj);
             }
+
         } catch(SQLException e) {
+            // Si hay error en la BD lo mostramos
             e.printStackTrace();
         }
-    
-    return objeto;
-    }   
+
+        // Devolvemos la lista completa de objetos
+        return objeto;
+    }
 }

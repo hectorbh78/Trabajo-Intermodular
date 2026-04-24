@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+
+    <!-- Elemento raíz -->
+    <xs:element name="puchadex">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="entrenador" type="EntrenadorType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ENTRENADOR -->
+    <xs:complexType name="EntrenadorType">
+        <xs:sequence>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="puchamones">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="puchamon" type="PuchamonType" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inventario">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="objeto" type="ObjetoType" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+    </xs:complexType>
+
+    <!-- PUCHAMON -->
+    <xs:complexType name="PuchamonType">
+        <xs:sequence>
+            <xs:element name="idPuch" type="xs:int"/>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="nivel" type="xs:int"/>
+            <xs:element name="vida" type="xs:int"/>
+            <xs:element name="idEntrenador" type="xs:int"/>
+            <xs:element name="tipos">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="tipo" type="xs:string" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ataques">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ataqueNormal" type="AtaqueType" maxOccurs="unbounded"/>
+                        <xs:element name="ataqueEspecial" type="AtaqueType" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+    </xs:complexType>
+
+    <!-- ATAQUE -->
+    <xs:complexType name="AtaqueType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="danio" type="xs:int" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <!-- OBJETO -->
+    <xs:complexType name="ObjetoType">
+        <xs:sequence>
+            <xs:element name="idEntrenador" type="xs:int"/>
+            <xs:element name="idObjeto" type="xs:int"/>
+        </xs:sequence>
+      
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+       
+    </xs:complexType>
+
+</xs:schema>

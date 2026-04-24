@@ -4,34 +4,102 @@
         <nombre>Ruben</nombre>
         <puchamones>
             <puchamon id="P001">
-                <nombre>Lagasur</nombre>
+                <idPuch>1</idPuch>
+                <nombre>Lagasaur</nombre>
                 <nivel>10</nivel>
-                <vida>35</vida>
+                <vida>100</vida>
+                <idEntrenador>1</idEntrenador>
                 <tipos>
                     <tipo>Planta</tipo>
                 </tipos>
                 <ataques>
-                    <ataque daño="50">Coletazo</ataque>
+                    <ataqueNormal danio="30">Coletazo</ataqueNormal>
+                    <ataqueEspecial danio="50">Tajo Supremo</ataqueEspecial>
                 </ataques>
             </puchamon>
             <puchamon id="P002">
+                <idPuch>2</idPuch>
                 <nombre>Salasaur</nombre>
-                <nivel>21</nivel>
-                <vida>65</vida>
+                <nivel>23</nivel>
+                <vida>130</vida>
+                <idEntrenador>1</idEntrenador>
                 <tipos>
                     <tipo>Planta</tipo>
                     <tipo>Veneno</tipo>
                 </tipos>
+                <ataques>
+                    <ataqueNormal danio="30">Coletazo</ataqueNormal>
+                    <ataqueEspecial danio="50">Tajo Supremo</ataqueEspecial>
+                </ataques>
+            </puchamon>
+            <puchamon id="P003">
+                <idPuch>3</idPuch>
+                <nombre>Dragasaur</nombre>
+                <nivel>33</nivel>
+                <vida>175</vida>
+                <idEntrenador>1</idEntrenador>
+                <tipos>
+                    <tipo>Planta</tipo>
+                    <tipo>Veneno</tipo>
+                </tipos>
+                <ataques>
+                    <ataqueNormal danio="30">Coletazo</ataqueNormal>
+                    <ataqueEspecial danio="50">Tajo Supremo</ataqueEspecial>
+                </ataques>
+            </puchamon>
+            <puchamon id="P007">
+                <idPuch>7</idPuch>
+                <nombre>Rico</nombre>
+                <nivel>10</nivel>
+                <vida>97</vida>
+                <idEntrenador>1</idEntrenador>
+                <tipos>
+                    <tipo>Agua</tipo>
+                </tipos>
+                <ataques>
+                    <ataqueNormal danio="30">Arañazo</ataqueNormal>
+                    <ataqueEspecial danio="50">Aqua Jet</ataqueEspecial>
+                </ataques>
+            </puchamon>
+            <puchamon id="P008">
+                <idPuch>8</idPuch>
+                <nombre>Krico</nombre>
+                <nivel>20</nivel>
+                <vida>124</vida>
+                <idEntrenador>1</idEntrenador>
+                <tipos>
+                    <tipo>Agua</tipo>
+                    <tipo>Acero</tipo>
+                </tipos>
+                <ataques>
+                    <ataqueNormal danio="30">Arañazo</ataqueNormal>
+                    <ataqueEspecial danio="50">Aqua Jet</ataqueEspecial>
+                </ataques>
+            </puchamon>
+            <puchamon id="P009">
+                <idPuch>9</idPuch>
+                <nombre>Krico: Hulkbuster</nombre>
+                <nivel>30</nivel>
+                <vida>159</vida>
+                <idEntrenador>1</idEntrenador>
+                <tipos>
+                    <tipo>Acero</tipo>
+                    <tipo>Explosivo</tipo>
+                </tipos>
+                <ataques>
+                    <ataqueNormal danio="30">Arañazo</ataqueNormal>
+                    <ataqueEspecial danio="50">Aqua Jet</ataqueEspecial>
+                </ataques>
             </puchamon>
         </puchamones>
         <inventario>
             <objeto id="OBJ1">
-                <nombre>Pocion</nombre>
-                <efecto>Cura 20 HP</efecto>
+                <idEntrenador>1</idEntrenador>
+                <idObjeto>1</idObjeto>
             </objeto>
             <objeto id="OBJ2">
-                <nombre>SuperPocion</nombre>
-                <efecto>Cura 50 HP</efecto>
+                <idEntrenador>1</idEntrenador>
+                <idObjeto>2</idObjeto>
             </objeto>
         </inventario>
     </entrenador>
@@ -40,18 +108,54 @@
         <nombre>Jp</nombre>
         <puchamones>
             <puchamon id="P004">
+                <idPuch>4</idPuch>
                 <nombre>Jai</nombre>
-                <nivel>12</nivel>
-                <vida>40</vida>
+                <nivel>10</nivel>
+                <vida>90</vida>
+                <idEntrenador>2</idEntrenador>
                 <tipos>
                     <tipo>Acero</tipo>
                 </tipos>
+                <ataques>
+                    <ataqueNormal danio="30">Navajazo</ataqueNormal>
+                    <ataqueEspecial danio="50">Super Navajazo</ataqueEspecial>
+                </ataques>
+            </puchamon>
+            <puchamon id="P005">
+                <idPuch>5</idPuch>
+                <nombre>Nava-Jazo</nombre>
+                <nivel>24</nivel>
+                <vida>110</vida>
+                <idEntrenador>2</idEntrenador>
+                <tipos>
+                    <tipo>Navaja</tipo>
+                    <tipo>Acero</tipo>
+                </tipos>
+                <ataques>
+                    <ataqueNormal danio="30">Navajazo</ataqueNormal>
+                    <ataqueEspecial danio="50">Super Navajazo</ataqueEspecial>
+                </ataques>
+            </puchamon>
+            <puchamon id="P006">
+                <idPuch>6</idPuch>
+                <nombre>Tapu-Ñalo</nombre>
+                <nivel>35</nivel>
+                <vida>142</vida>
+                <idEntrenador>2</idEntrenador>
+                <tipos>
+                    <tipo>Navaja</tipo>
+                    <tipo>Acero</tipo>
+                </tipos>
+                <ataques>
+                    <ataqueNormal danio="30">Navajazo</ataqueNormal>
+                    <ataqueEspecial danio="50">Super Navajazo</ataqueEspecial>
+                </ataques>
             </puchamon>
         </puchamones>
         <inventario>
-            <objeto id="OBJ1">
-                <nombre>Pocion</nombre>
-                <efecto>Cura 20 HP</efecto>
+            <objeto id="OBJ3">
+                <idEntrenador>2</idEntrenador>
+                <idObjeto>1</idObjeto>
             </objeto>
         </inventario>
     </entrenador>

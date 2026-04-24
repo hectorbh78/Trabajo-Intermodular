@@ -52,6 +52,7 @@ CREATE TABLE Mision (
 CREATE TABLE Inventario (
     idEntrenador INT,
     idObjeto INT,
+    numObjetos INT,
     PRIMARY KEY (idEntrenador, idObjeto),
     FOREIGN KEY (idEntrenador) REFERENCES Entrenador(idEntrenador),
     FOREIGN KEY (idObjeto) REFERENCES Objeto(idObjeto)

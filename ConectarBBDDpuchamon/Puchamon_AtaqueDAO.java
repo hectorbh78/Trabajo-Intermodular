@@ -1,38 +1,52 @@
 package ConectarBBDDpuchamon;
+
 import PuchamonGris.*;
 import java.sql.*;
 import java.util.*;
 
-public class Puchamon_AtaqueDAO{
-    public List<Puchamon_Ataque> selectPuchamon_Ataque (Connection pruebaConexion) {
+// DAO de Puchamon_Ataque (relación entre Puchamon y sus ataques)
+public class Puchamon_AtaqueDAO {
 
-        String consulta = "select * from Puchamon_Ataque";
+    // Método que obtiene la relación Puchamon - Ataques desde la BD
+    public List<Puchamon_Ataque> selectPuchamon_Ataque(Connection pruebaConexion) {
 
+        // Consulta SQL para sacar la tabla intermedia
+        String consulta = "SELECT * FROM Puchamon_Ataque";
+
+        // Lista donde se guardan los registros
         List<Puchamon_Ataque> puchamonAtaque = new ArrayList<>();
 
-         try(Statement stmt = pruebaConexion.createStatement();
-            ResultSet resultado = stmt.executeQuery(consulta)){
+        try(
+            // Creamos la sentencia SQL
+            Statement stmt = pruebaConexion.createStatement();
 
-            //en el try se ha creado la sentencia y se ha ejecutado la query
-            //si no se sale por el catch, es que ha ido bien, queda recorrer los resultados
+            // Ejecutamos la consulta y guardamos resultados
+            ResultSet resultado = stmt.executeQuery(consulta)
+        ){
 
+            // Recorremos cada fila de la tabla
             while(resultado.next()) {
-                //next() se va desplazando por el conjunto de resultados que devuelve
-                //el servidor y que se almacena en ResultSet
-                //para obtener los datos se utilizan métodos get
-                //obtenemos columna a columna
+
+                // Sacamos los datos de cada columna
                 int idPuch = resultado.getInt("idPuch");
-                String idAtaque = resultado.getString("idAtaque");
-                String idAtaque2 = resultado.getString("idAtaque2");
 
+                // OJO: estos deberían ser INT si son IDs, no String
+                int idAtaque = resultado.getInt("idAtaque");
+                int idAtaque2 = resultado.getInt("idAtaque2");
 
+                // Creamos el objeto con los datos
                 Puchamon_Ataque puchAtaq = new Puchamon_Ataque(idPuch, idAtaque, idAtaque2);
-                puchamonAtaque.add(puchAtaq); //se añade el alumno a la lista
+
+                // Lo añadimos a la lista
+                puchamonAtaque.add(puchAtaq);
             }
+
         } catch(SQLException e) {
+            // Si hay error en la BD lo mostramos
             e.printStackTrace();
         }
-    
-    return puchamonAtaque;
-    }   
+
+        // Devolvemos la lista completa
+        return puchamonAtaque;
+    }
 }

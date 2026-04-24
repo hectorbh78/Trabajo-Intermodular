@@ -1,40 +1,50 @@
 package ConectarBBDDpuchamon;
+
 import PuchamonGris.*;
 import java.sql.*;
 import java.util.*;
 
-public class TipoPuchamonDAO{
-     public List<TIposPuchamon> selectTipoPuchamon (Connection pruebaConexion) {
+// DAO de TipoPuchamon (relación entre Puchamon y sus tipos)
+public class TipoPuchamonDAO {
 
-        String consulta = "select * from tipoPuchamon";
+    // Método que devuelve la lista de tipos asignados a cada Puchamon
+    public List<TIposPuchamon> selectTipoPuchamon(Connection pruebaConexion) {
 
+        // Consulta SQL para obtener la tabla de relación
+        String consulta = "SELECT * FROM tipoPuchamon";
+
+        // Lista donde se guardan los registros
         List<TIposPuchamon> tipoPuchamon = new ArrayList<>();
 
-        try(Statement stmt = pruebaConexion.createStatement();
-            ResultSet resultado = stmt.executeQuery(consulta)){
+        try(
+            // Creamos la sentencia SQL
+            Statement stmt = pruebaConexion.createStatement();
 
-            //en el try se ha creado la sentencia y se ha ejecutado la query
-            //si no se sale por el catch, es que ha ido bien, queda recorrer los resultados
+            // Ejecutamos la consulta y guardamos resultados
+            ResultSet resultado = stmt.executeQuery(consulta)
+        ){
 
+            // Recorremos cada fila de la tabla
             while(resultado.next()) {
-                //next() se va desplazando por el conjunto de resultados que devuelve
-                //el servidor y que se almacena en ResultSet
-                //para obtener los datos se utilizan métodos get
-                //obtenemos columna a columna
+
+                // Sacamos los datos de cada columna
                 int idPuch = resultado.getInt("idPuch");
                 int idTipo = resultado.getInt("idTipo");
                 int idTipo2 = resultado.getInt("idTipo2");
-                
-                
 
+                // Creamos el objeto relación Puchamon - Tipo
+                TIposPuchamon tipPuch = new TIposPuchamon(idPuch, idTipo, idTipo2);
 
-                TIposPuchamon tipPuch = new TIposPuchamon(idPuch,idTipo,idTipo2);
-                tipoPuchamon.add(tipPuch); //se añade el alumno a la lista
+                // Lo añadimos a la lista
+                tipoPuchamon.add(tipPuch);
             }
+
         } catch(SQLException e) {
+            // Si hay error en la base de datos lo muestra
             e.printStackTrace();
         }
-    
-    return tipoPuchamon;
+
+        // Devolvemos la lista completa
+        return tipoPuchamon;
     }
 }

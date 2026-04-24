@@ -1,40 +1,52 @@
 package ConectarBBDDpuchamon;
+
 import PuchamonGris.*;
 import java.sql.*;
 import java.util.*;
 
-public class MisionDAO{
-    public List<Mision> selectMision (Connection pruebaConexion) {
+// DAO de Misión (lee las misiones desde la base de datos)
+public class MisionDAO {
 
-        String consulta = "select * from mision";
+    // Método que devuelve todas las misiones de la BD
+    public List<Mision> selectMision(Connection pruebaConexion) {
 
+        // Consulta SQL para sacar todas las misiones
+        String consulta = "SELECT * FROM mision";
+
+        // Lista donde se guardan las misiones
         List<Mision> mision = new ArrayList<>();
 
-         try(Statement stmt = pruebaConexion.createStatement();
-            ResultSet resultado = stmt.executeQuery(consulta)){
+        try(
+            // Creamos la sentencia SQL
+            Statement stmt = pruebaConexion.createStatement();
 
-            //en el try se ha creado la sentencia y se ha ejecutado la query
-            //si no se sale por el catch, es que ha ido bien, queda recorrer los resultados
+            // Ejecutamos la consulta y guardamos el resultado
+            ResultSet resultado = stmt.executeQuery(consulta)
+        ){
 
+            // Recorremos cada fila de la tabla mision
             while(resultado.next()) {
-                //next() se va desplazando por el conjunto de resultados que devuelve
-                //el servidor y que se almacena en ResultSet
-                //para obtener los datos se utilizan métodos get
-                //obtenemos columna a columna
+
+                // Sacamos los datos de cada columna
                 int idMision = resultado.getInt("idMision");
                 String descripcion = resultado.getString("descripcion");
                 String recompensa = resultado.getString("recompensa");
                 int idMundo = resultado.getInt("idMundo");
                 int idObjeto = resultado.getInt("idObjeto");
 
-
+                // Creamos el objeto Mision con los datos obtenidos
                 Mision mis = new Mision(idMision, descripcion, recompensa, idMundo, idObjeto);
-                mision.add(mis); //se añade el alumno a la lista
+
+                // Lo añadimos a la lista
+                mision.add(mis);
             }
+
         } catch(SQLException e) {
+            // Si hay error en la base de datos lo mostramos
             e.printStackTrace();
         }
-    
-    return mision;
-}
+
+        // Devolvemos la lista completa de misiones
+        return mision;
+    }
 }

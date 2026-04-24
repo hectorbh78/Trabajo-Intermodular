@@ -1,37 +1,49 @@
 package ConectarBBDDpuchamon;
+
 import PuchamonGris.*;
 import java.sql.*;
 import java.util.*;
 
-public class EntrenadorDAO{
-     public List<Entrenador> selectEntrenador (Connection pruebaConexion) {
+// DAO de Entrenador (sirve para leer entrenadores de la base de datos)
+public class EntrenadorDAO {
 
-        String consulta = "select * from entrenador";
+    // Método que devuelve todos los entrenadores de la BD
+    public List<Entrenador> selectEntrenador(Connection pruebaConexion) {
 
+        // Consulta SQL para sacar todos los entrenadores
+        String consulta = "SELECT * FROM entrenador";
+
+        // Lista donde se guardan los entrenadores
         List<Entrenador> entrenador = new ArrayList<>();
 
-         try(Statement stmt = pruebaConexion.createStatement();
-            ResultSet resultado = stmt.executeQuery(consulta)){
+        try(
+            // Creamos la sentencia SQL
+            Statement stmt = pruebaConexion.createStatement();
 
-            //en el try se ha creado la sentencia y se ha ejecutado la query
-            //si no se sale por el catch, es que ha ido bien, queda recorrer los resultados
+            // Ejecutamos la consulta y guardamos el resultado
+            ResultSet resultado = stmt.executeQuery(consulta)
+        ){
 
+            // Recorremos todos los registros de la base de datos
             while(resultado.next()) {
-                //next() se va desplazando por el conjunto de resultados que devuelve
-                //el servidor y que se almacena en ResultSet
-                //para obtener los datos se utilizan métodos get
-                //obtenemos columna a columna
+
+                // Sacamos los datos de cada fila
                 int idEntrenador = resultado.getInt("idEntrenador");
                 String nombre = resultado.getString("nombre");
 
-
+                // Creamos el objeto Entrenador con los datos
                 Entrenador entre = new Entrenador(idEntrenador, nombre);
-                entrenador.add(entre); //se añade el alumno a la lista
+
+                // Lo añadimos a la lista
+                entrenador.add(entre);
             }
+
         } catch(SQLException e) {
+            // Si hay error en la base de datos lo muestra
             e.printStackTrace();
         }
-    
-    return entrenador;
+
+        // Devolvemos la lista completa
+        return entrenador;
     }
 }
