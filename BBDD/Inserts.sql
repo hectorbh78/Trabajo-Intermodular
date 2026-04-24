@@ -1,8 +1,8 @@
 -- Mundo
 INSERT INTO Mundo (Nombre, Region) VALUES 
-('Parla', 'Centro'),
-('Valde', 'Moro'),
-('Bronx', 'Brasil Oscuro');
+('Pradera verde', 'Alpha'),
+('Valle del Castor', 'Beta'),
+('Santuraio primordial', 'Epsilon');
 
 -- Tipo
 INSERT INTO Tipo (Nombre) VALUES 

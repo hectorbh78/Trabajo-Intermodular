@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <puchadex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="esquema.xsd">
-    <entrenador id="1">
+    <entrenador id="Ruben">
         <nombre>Ruben</nombre>
         <puchamones>
             <puchamon id="P001">
@@ -104,7 +104,7 @@
         </inventario>
     </entrenador>
     
-    <entrenador id="2">
+    <entrenador id="Leo">
         <nombre>Jp</nombre>
         <puchamones>
             <puchamon id="P004">

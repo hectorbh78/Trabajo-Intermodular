@@ -20,7 +20,7 @@ public class AppPuchamon {
         Scanner miEscaner= new Scanner(System.in); // Scanner para leer datos del usuario
         AppPuchamon app = new AppPuchamon(); // Creamos objeto de la app
         
-        // Bucle del menú principal
+        // Bucle del menú principal 3
         do
         {
             app.menu(); // Mostramos menú
@@ -34,7 +34,7 @@ public class AppPuchamon {
                     app.mostrarVersion(); // Muestra versión
                     break;
                 case 3:
-                    System.out.println("Web");
+                    System.out.println("Web Seleccionada");
 
                         try {
                             String url = "http://localhost:8080/Web/index.html";

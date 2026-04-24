@@ -11,7 +11,7 @@ public class InventarioDAO {
     public List<Inventario> selectInventario(Connection pruebaConexion) {
 
         // Consulta SQL para sacar todos los registros del inventario
-        String consulta = "SELECT * FROM inventario";
+        String consulta = "SELECT numObjetos FROM inventario";
 
         // Lista donde se guardan los objetos del inventario
         List<Inventario> inventario = new ArrayList<>();
@@ -30,7 +30,7 @@ public class InventarioDAO {
                 // Sacamos los datos de cada columna
                 int idEntrenador = resultado.getInt("idEntrenador");
                 int idObjeto = resultado.getInt("idObjeto");
-                int numObjetos = resultado.getInt("numObjetos");
+                int numObjetos = resultado.getInt("Numero de objetos");
 
                 // Creamos el objeto Inventario
                 Inventario invent = new Inventario(idEntrenador, idObjeto, numObjetos);

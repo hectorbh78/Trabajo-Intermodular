@@ -34,11 +34,11 @@ public class Mundo1 {
         int opcionCombate;
         
         // Mensaje inicial del combate
-        System.out.println("\n====== PARLA CENTRO - COMBATE ======");
+        System.out.println("\n====== PRADERA VERDE - COMBATE ======");
         System.out.println("¡Te enfrentas a " + entrenadorEnemigo.getNombreEntrenadorEnemigo() + "!");
         System.out.println(puchaEnemigo.getNombrePuchaEnemigo() + " ha entrado en combate");
         System.out.println(puchaJugador.getNombrePuchamon() + " está listo\n");
-        System.out.println("==================================\n");
+        System.out.println("====================================\n");
         
         // Bucle del combate (hasta que alguien se quede sin vida)
         while(vidaJugador > 0 && vidaEnemigo > 0){

@@ -23,11 +23,11 @@ public class Mundo3 {
         int opcionCombate;
         
         // Mensaje inicial del combate
-        System.out.println("\n====== EL BRONX - COMBATE ======");
+        System.out.println("\n====== SANTUARIO PRIMORDIAL - COMBATE ======");
         System.out.println("¡Te enfrentas a " + entrenadorEnemigo.getNombreEntrenadorEnemigo() + "!");
         System.out.println(puchaEnemigo.getNombrePuchaEnemigo() + " ha entrado en combate");
         System.out.println(puchaJugador.getNombrePuchamon() + " está listo\n");
-        System.out.println("==================================\n");
+        System.out.println("============================================\n");
         
         // Bucle del combate (hasta que alguien pierda toda la vida)
         while(vidaJugador > 0 && vidaEnemigo > 0){
