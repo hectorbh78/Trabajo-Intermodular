@@ -27,14 +27,15 @@ public class Mundo3 {
         System.out.println("¡Te enfrentas a " + entrenadorEnemigo.getNombreEntrenadorEnemigo() + "!");
         System.out.println(puchaEnemigo.getNombrePuchaEnemigo() + " ha entrado en combate");
         System.out.println(puchaJugador.getNombrePuchamon() + " está listo\n");
+        System.out.println("==================================\n");
         
         // Bucle del combate (hasta que alguien pierda toda la vida)
         while(vidaJugador > 0 && vidaEnemigo > 0){
             
             // Mostrar estado del combate
             System.out.println("\n======== ESTADO DE COMBATE =======");
-            System.out.println("| " + puchaJugador.getNombrePuchamon() + " HP: " + vidaJugador);
-            System.out.println("| " + puchaEnemigo.getNombrePuchaEnemigo() + " HP: " + vidaEnemigo);
+            System.out.println("| " + puchaJugador.getNombrePuchamon() + " HP: " + vidaJugador+" |");
+            System.out.println("| " + puchaEnemigo.getNombrePuchaEnemigo() + " HP: " + vidaEnemigo+" |");
             System.out.println("==================================\n");
             
             // Menú de opciones del jugador
@@ -93,8 +94,8 @@ public class Mundo3 {
             if(vidaEnemigo <= 0) break;
             
             // Turno del enemigo
-            System.out.println("\nTu atacas...");
-            System.out.println("\nEl enemigo ataca...");
+            System.out.println("Tu atacas...");
+            System.out.println("El enemigo ataca...");
             
             int ataqueEnemigo = (int)(Math.random() * 2) + 1;
             int danoRecibido = 0;
@@ -108,7 +109,7 @@ public class Mundo3 {
                 danoRecibido = 45;
 
                 // Probabilidad de crítico
-                if(Math.random() < 0.3){
+                if(Math.random() < 0.1){ // 10% de probabilidad de crítico
                     danoRecibido *= 2;
                     System.out.println("¡¡CRÍTICO DEL ENEMIGO!!");
                 } else {
@@ -137,7 +138,9 @@ public class Mundo3 {
         System.out.println("==================================\n");
 
         // Pausa antes de volver al menú
-        System.out.println("Presiona Enter para volver al menú...");
-        scanner.nextLine();
+        if(vidaJugador > 0) {
+            System.out.println("Presiona Enter para volver al menú...");
+            scanner.nextLine();
+        }
     }
 }

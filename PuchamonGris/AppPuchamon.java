@@ -10,7 +10,7 @@ import java.net.URI;
 import java.util.*;
 import PuchamonGris.*;
 import java.sql.*;
-
+import java.net.URL;
 
 // Clase principal del programa
 public class AppPuchamon {
@@ -35,17 +35,30 @@ public class AppPuchamon {
                     break;
                 case 3:
                     System.out.println("Web");
-                    
-                    break;
+
+                        try {
+                            String url = "http://localhost:8080/Web/index.html";
+
+                            ProcessBuilder pb = new ProcessBuilder(
+                                "cmd", "/c", "start chrome " + url
+                            );
+
+                            pb.start();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        break;
                 case 4:
                     System.out.println("Salir");
-                    System.out.println("Gracias por jugar a las Puchas Aventuras");
+                    System.out.println("Gracias por jugar a las Pucha Aventuras");
                     break;
                 default:
                     System.out.println("Opcion no valida"); // Control de error
             }
 
-        } while (opcion != 3); // Se repite hasta salir
+        } while (opcion != 4); // Se repite hasta salir
     }
     
     // Método que muestra el menú principal
@@ -63,7 +76,7 @@ public class AppPuchamon {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\n+==========================+");
         System.out.println("|      PUCHA ADVENTURE     |");
-        System.out.println("|      Versión 1.0.0       |");
+        System.out.println("|      Versión 2.0.0       |");
         System.out.println("+==========================+\n");
         System.out.println("Presiona Enter para volver al menú...");
         scanner.nextLine(); // Espera a que el usuario pulse enter
@@ -122,9 +135,9 @@ public class AppPuchamon {
     // Menú de mundos
     public static void menuMundos(){
         System.out.println("\n+========== MUNDOS ==========+");
-        System.out.println("| 1. Parla Centro            |");
-        System.out.println("| 2. Valde Moro              |");
-        System.out.println("| 3. El Bronx                |");
+        System.out.println("| 1. Parla Centro (Principiante) |");
+        System.out.println("| 2. Valde Moro (Intermedio)     |");
+        System.out.println("| 3. El Bronx (Experto)          |");
         System.out.println("+============================+");
     }
 
@@ -136,7 +149,12 @@ public class AppPuchamon {
         Puchamon puchaJugador = seleccionarPuchamon(); // Elegimos personaje
         PuchamonDAO A1 = new PuchamonDAO(); // DAO para puchamon
         InventarioDAO Inven1 = new InventarioDAO(); // DAO para inventario
-        
+        try {
+            Connection conex = PruebaConexion.getConnection();
+        Inven1.inventarioACero(conex);
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
         // Bucle del menú del juego
         do
         {
@@ -155,16 +173,22 @@ public class AppPuchamon {
                             System.out.println("Bienvenido a Parla Centro");
                             Mundo1 mundo1 = new Mundo1();
                             mundo1.iniciarCombate(puchaJugador); // Empieza combate
+                            AppPuchamon app = new AppPuchamon();
+                            app.finPartida(puchaJugador);
                             break;
                         case 2: 
                             System.out.println("Bienvenido a Valde Moro");
                             Mundo2 mundo2 = new Mundo2();
                             mundo2.iniciarCombate(puchaJugador);
+                            AppPuchamon app2 = new AppPuchamon();
+                            app2.finPartida(puchaJugador);
                             break;
                         case 3:
                             System.out.println("Bienvenido a El Bronx");
                             Mundo3 mundo3 = new Mundo3();
                             mundo3.iniciarCombate(puchaJugador);
+                            AppPuchamon app3 = new AppPuchamon();
+                            app3.finPartida(puchaJugador);
                             break;
                         default:
                             System.out.println("opcion incorrecta");
@@ -178,8 +202,8 @@ public class AppPuchamon {
                     System.out.println("(IdObjeto = 2) = Super Poción");
 
                     try {
-                        Connection conex = PruebaConexion.getConnection();
-                        List<Inventario> inven = Inven1.selectInventario(conex);
+                        Connection conex1 = PruebaConexion.getConnection();
+                        List<Inventario> inven = Inven1.selectInventario(conex1);
 
                         if (inven == null || inven.isEmpty()) {
                             System.out.println(" El inventario está vacío en la base de datos.");
@@ -198,23 +222,37 @@ public class AppPuchamon {
                     // Mostrar Puchadex (lista de puchamones)
                     System.out.println("Bienvenido a la Puchadex");
 
-                    try{
-                        Connection conex = PruebaConexion.getConnection();
-                        List<Puchamon> puchamon = A1.selectPucha(conex);
+                    try {
+                            String url = "http://localhost:8080/Web/main.html";
 
-                        for(Puchamon puch:puchamon){
-                            System.out.println(puch);
+                            ProcessBuilder pb = new ProcessBuilder(
+                                "cmd", "/c", "start chrome " + url
+                            );
+
+                            pb.start();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                    
 
-                    } catch(Exception e){
-                        System.out.println("Error"); // Error básico
-                    }
                     
                     break;
 
                 case 4:
                     System.out.println("Bienvenido al Gachapon"); // Opción para entrar al gachapon
+
+                    try {
+                            String url = "http://localhost:8080/Web/banners.html";
+
+                            ProcessBuilder pb = new ProcessBuilder(
+                                "cmd", "/c", "start chrome " + url
+                            );
+
+                            pb.start();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     break;
 
                 case 5:
@@ -226,19 +264,12 @@ public class AppPuchamon {
 
         } while ( opcionjuego != 5); // Se repite hasta salir del juego
     }
+
+    public void finPartida(Puchamon puchamon){
+        if (puchamon.getVida() <= 0) { 
+            System.out.println("\n¡Partida terminada! Tu Puchamon se ha debilitado.");
+            System.out.println("Gracias por jugar a Pucha Adventures.");
+            System.exit(0); 
+        }
+    }
 }
-
-
-/*
-try {
-                        // Ruta del archivo HTML
-                        File htmlFile = new File("C:\\Users\\Alumno.DESKTOP-DI5KTUG\\Desktop\\Proyecto TFG\\Web\\index.html");
-
-                        // Abrir en navegador
-                        Desktop.getDesktop().browse(htmlFile.toURI());
-                        System.out.println("Presiona cualquier numero");
-                        opcion = miEscaner.nextInt();
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    } */

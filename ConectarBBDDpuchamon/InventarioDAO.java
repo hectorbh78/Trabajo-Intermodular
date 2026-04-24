@@ -63,4 +63,33 @@ public class InventarioDAO {
         e.printStackTrace();
     }
 }
+public void eliminiarInventario(Connection con, int idEntrenador, int idObjeto) {
+
+    String sql = "UPDATE inventario SET numObjetos = numObjetos - 1 WHERE idEntrenador = ? AND idObjeto = ?";
+
+    try (PreparedStatement stmt = con.prepareStatement(sql)) {
+
+        stmt.setInt(1, idEntrenador);
+        stmt.setInt(2, idObjeto);
+
+        stmt.executeUpdate();
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+
+public void inventarioACero(Connection con) {
+
+    String sql = "UPDATE inventario SET numObjetos = 0";
+
+    try (PreparedStatement stmt = con.prepareStatement(sql)) {
+
+        stmt.executeUpdate();
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
 }

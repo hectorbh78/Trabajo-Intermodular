@@ -1,3 +1,5 @@
+# LEER IMPORTANTE: Para que la web funcione tienes que abrir un servidor en Apache con XAMPP en el puerto 8080.
+
 # 🦖 Puchamon Adventure
 
 > **¡Bienvenido al mundo de los Puchamones!**  
